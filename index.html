@@ -22,138 +22,126 @@
     .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; letter-spacing: -0.03em; }
 
     /* ===== THEME VARIABLES ===== */
-    /* Light: Teal + Indigo dual-tone — modern, trustworthy, premium */
+    /* Light: Electric cyan + vivid violet — bold, modern, fresh */
     :root {
-      --accent: #0e7490;
-      --accent-light: #0891b2;
-      --accent2: #6366f1;
-      --accent-bg: rgba(14,116,144,0.06);
+      --accent: #0891b2;
+      --accent-light: #22d3ee;
+      --accent2: #8b5cf6;
+      --accent-bg: rgba(8,145,178,0.07);
       --accent-text: #fff;
-      --accent-glow: rgba(14,116,144,0.12);
+      --accent-glow: rgba(8,145,178,0.18);
 
-      --bg: #f7f9fb;
+      --bg: #f0f4f8;
       --bg2: #ffffff;
-      --bg3: #eef2f7;
-      --surface: #ffffff;
-      --surface-border: rgba(15,23,42,0.07);
-      --surface-hover: #f1f5f9;
-      --text: #0c1a2e;
-      --text2: #3e5068;
-      --text3: #8494a7;
-      --text4: #c8d1dc;
-      --header-bg: rgba(247,249,251,0.85);
-      --header-border: rgba(15,23,42,0.06);
-      --glow: 0 1px 8px rgba(14,116,144,0.08);
-      --pattern-opacity: 0.045;
-      --badge-1-bg: linear-gradient(135deg, #0e7490, #6366f1);
+      --bg3: #e8eef4;
+      --surface: rgba(255,255,255,0.85);
+      --surface-border: rgba(15,23,42,0.08);
+      --surface-hover: #edf2f7;
+      --text: #0a1628;
+      --text2: #334a6e;
+      --text3: #7088a8;
+      --text4: #bcc8d8;
+      --header-bg: rgba(240,244,248,0.88);
+      --header-border: rgba(8,145,178,0.08);
+      --glow: 0 2px 12px rgba(8,145,178,0.12), 0 1px 4px rgba(139,92,246,0.06);
+      --pattern-opacity: 1;
+      --badge-1-bg: linear-gradient(135deg, #0891b2, #8b5cf6);
       --badge-1-text: #fff;
-      --badge-1-glow: 0 2px 12px rgba(14,116,144,0.25), 0 2px 8px rgba(99,102,241,0.15);
-      --badge-2-bg: rgba(99,102,241,0.1);
-      --badge-2-text: #6366f1;
-      --badge-2-glow: 0 1px 6px rgba(99,102,241,0.1);
-      --badge-3-bg: rgba(14,116,144,0.06);
-      --badge-3-text: #8494a7;
+      --badge-1-glow: 0 2px 16px rgba(8,145,178,0.3), 0 2px 10px rgba(139,92,246,0.2);
+      --badge-2-bg: rgba(139,92,246,0.12);
+      --badge-2-text: #7c3aed;
+      --badge-2-glow: 0 2px 8px rgba(139,92,246,0.12);
+      --badge-3-bg: rgba(8,145,178,0.06);
+      --badge-3-text: #7088a8;
       --badge-3-glow: none;
-      --neon-line: rgba(14,116,144,0.15);
-      --surface-glow: none;
-      --surface-glow-hover: 0 4px 20px rgba(14,116,144,0.08), 0 2px 10px rgba(99,102,241,0.04);
+      --neon-line: rgba(8,145,178,0.2);
+      --surface-glow: 0 1px 3px rgba(8,145,178,0.04);
+      --surface-glow-hover: 0 4px 24px rgba(8,145,178,0.1), 0 2px 12px rgba(139,92,246,0.06);
     }
 
-    /* Dark: Near-black + neon violet/cyan dual-tone — vivid, aggressive */
+    /* Dark: Neon violet + electric cyan — vivid, aggressive, sleek */
     .dark, body.dark-bg {
       --accent: #a855f7;
       --accent-light: #c084fc;
-      --accent2: #06b6d4;
-      --accent-bg: rgba(168,85,247,0.08);
+      --accent2: #22d3ee;
+      --accent-bg: rgba(168,85,247,0.1);
       --accent-text: #0a0a0a;
-      --accent-glow: rgba(168,85,247,0.2);
+      --accent-glow: rgba(168,85,247,0.25);
 
-      --bg: #09090b;
-      --bg2: #0e0e11;
-      --bg3: #131318;
-      --surface: rgba(20,20,26,0.8);
-      --surface-border: rgba(255,255,255,0.06);
-      --surface-hover: rgba(26,26,34,0.9);
-      --text: #f0f0f5;
-      --text2: rgba(240,240,245,0.65);
-      --text3: rgba(240,240,245,0.32);
-      --text4: rgba(240,240,245,0.08);
-      --header-bg: rgba(9,9,11,0.7);
-      --header-border: rgba(168,85,247,0.1);
-      --glow: 0 0 20px rgba(168,85,247,0.15), 0 0 60px rgba(168,85,247,0.04);
+      --bg: #07070a;
+      --bg2: #0c0c10;
+      --bg3: #111116;
+      --surface: rgba(16,16,22,0.85);
+      --surface-border: rgba(255,255,255,0.07);
+      --surface-hover: rgba(24,24,32,0.9);
+      --text: #f2f2f8;
+      --text2: rgba(242,242,248,0.7);
+      --text3: rgba(242,242,248,0.35);
+      --text4: rgba(242,242,248,0.1);
+      --header-bg: rgba(7,7,10,0.75);
+      --header-border: rgba(168,85,247,0.12);
+      --glow: 0 0 24px rgba(168,85,247,0.2), 0 0 60px rgba(34,211,238,0.06);
       --pattern-opacity: 1;
-      --badge-1-bg: linear-gradient(135deg, #a855f7, #06b6d4);
+      --badge-1-bg: linear-gradient(135deg, #a855f7, #22d3ee);
       --badge-1-text: #0a0a0a;
-      --badge-1-glow: 0 0 16px rgba(168,85,247,0.5), 0 0 40px rgba(6,182,212,0.2);
-      --badge-2-bg: rgba(168,85,247,0.15);
+      --badge-1-glow: 0 0 20px rgba(168,85,247,0.5), 0 0 40px rgba(34,211,238,0.25);
+      --badge-2-bg: rgba(168,85,247,0.18);
       --badge-2-text: #c084fc;
-      --badge-2-glow: 0 0 8px rgba(168,85,247,0.15);
-      --badge-3-bg: rgba(6,182,212,0.08);
-      --badge-3-text: rgba(240,240,245,0.4);
+      --badge-2-glow: 0 0 10px rgba(168,85,247,0.2);
+      --badge-3-bg: rgba(34,211,238,0.08);
+      --badge-3-text: rgba(242,242,248,0.4);
       --badge-3-glow: none;
-      --neon-line: rgba(168,85,247,0.3);
-      --surface-glow: 0 0 0 1px rgba(168,85,247,0.04);
-      --surface-glow-hover: 0 0 24px rgba(168,85,247,0.1), 0 0 0 1px rgba(168,85,247,0.12);
+      --neon-line: rgba(168,85,247,0.35);
+      --surface-glow: 0 0 0 1px rgba(168,85,247,0.06);
+      --surface-glow-hover: 0 0 28px rgba(168,85,247,0.14), 0 0 0 1px rgba(168,85,247,0.15);
     }
 
     body { background: var(--bg); color: var(--text); }
 
     /* ===== BACKGROUND PATTERNS ===== */
-    /* Light: layered geometric — diamond crosshatch + hexagonal dots + fine grid */
+    /* Geometric SVG pattern layer */
+    .geo-pattern {
+      position: fixed; inset: 0; z-index: -2; pointer-events: none;
+    }
+    /* Light: clean diamond grid */
+    .geo-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%230891b2' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%238b5cf6' opacity='0.06'/%3E%3Ccircle cx='0' cy='0' r='1' fill='%230891b2' opacity='0.05'/%3E%3Ccircle cx='60' cy='0' r='1' fill='%230891b2' opacity='0.05'/%3E%3Ccircle cx='0' cy='60' r='1' fill='%230891b2' opacity='0.05'/%3E%3Ccircle cx='60' cy='60' r='1' fill='%230891b2' opacity='0.05'/%3E%3C/svg%3E");
+      background-size: 60px 60px;
+    }
+    /* Dark: neon hex grid */
+    .dark .geo-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='52' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0L30 8.66L30 25.98L15 34.64L0 25.98L0 8.66Z' fill='none' stroke='%23a855f7' stroke-width='0.4' opacity='0.12'/%3E%3Cpath d='M45 17.32L60 25.98L60 43.3L45 51.96L30 43.3L30 25.98Z' fill='none' stroke='%2322d3ee' stroke-width='0.4' opacity='0.08'/%3E%3Ccircle cx='15' cy='0' r='1' fill='%23a855f7' opacity='0.15'/%3E%3Ccircle cx='45' cy='26' r='1' fill='%2322d3ee' opacity='0.12'/%3E%3C/svg%3E");
+      background-size: 60px 52px;
+    }
+
+    /* Secondary geometric layer — triangles + crosses */
+    .geo-pattern-2 {
+      position: fixed; inset: 0; z-index: -3; pointer-events: none;
+    }
+    .geo-pattern-2 {
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10L50 30L30 30Z' fill='none' stroke='%238b5cf6' stroke-width='0.4' opacity='0.06'/%3E%3Cline x1='0' y1='40' x2='80' y2='40' stroke='%230891b2' stroke-width='0.3' opacity='0.04'/%3E%3Cline x1='40' y1='0' x2='40' y2='80' stroke='%230891b2' stroke-width='0.3' opacity='0.04'/%3E%3Cpath d='M36 76L40 68L44 76' fill='none' stroke='%238b5cf6' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 80px 80px;
+    }
+    .dark .geo-pattern-2 {
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 15L48 30L32 30Z' fill='none' stroke='%2322d3ee' stroke-width='0.5' opacity='0.08'/%3E%3Cline x1='0' y1='0' x2='80' y2='80' stroke='%23a855f7' stroke-width='0.3' opacity='0.06'/%3E%3Cline x1='80' y1='0' x2='0' y2='80' stroke='%23a855f7' stroke-width='0.3' opacity='0.06'/%3E%3Ccircle cx='40' cy='40' r='8' fill='none' stroke='%2322d3ee' stroke-width='0.3' opacity='0.05'/%3E%3Cpath d='M36 70L40 62L44 70' fill='none' stroke='%23a855f7' stroke-width='0.4' opacity='0.06'/%3E%3C/svg%3E");
+      background-size: 80px 80px;
+    }
+
+    /* Gradient wash overlay */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      z-index: -1;
-      opacity: var(--pattern-opacity);
-      background-image:
-        /* Diamond crosshatch */
-        linear-gradient(45deg, rgba(14,116,144,0.6) 1px, transparent 1px),
-        linear-gradient(-45deg, rgba(99,102,241,0.5) 1px, transparent 1px),
-        /* Hexagonal dot grid */
-        radial-gradient(circle 1.2px, rgba(14,116,144,0.3) 1.2px, transparent 1.2px),
-        radial-gradient(circle 1.2px, rgba(99,102,241,0.2) 1.2px, transparent 1.2px),
-        /* Fine orthogonal grid */
-        linear-gradient(rgba(14,116,144,0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(99,102,241,0.1) 1px, transparent 1px);
-      background-size: 36px 36px, 36px 36px, 30px 52px, 30px 52px, 60px 60px, 60px 60px;
-      background-position: 0 0, 0 0, 0 0, 15px 26px, 0 0, 0 0;
-    }
-
-    /* Light: dual-tone gradient wash — teal top-left, indigo bottom-right, center glow */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: -2;
+      z-index: -4;
       pointer-events: none;
       background:
-        radial-gradient(ellipse 800px 600px at 0% 0%, rgba(14,116,144,0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 600px 500px at 100% 100%, rgba(99,102,241,0.05) 0%, transparent 70%),
-        radial-gradient(ellipse 500px 300px at 50% 0%, rgba(14,116,144,0.025) 0%, transparent 60%),
-        radial-gradient(ellipse 400px 400px at 80% 30%, rgba(99,102,241,0.02) 0%, transparent 50%);
+        radial-gradient(ellipse 800px 600px at 5% 5%, rgba(8,145,178,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 500px at 95% 90%, rgba(139,92,246,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 50% 50%, rgba(8,145,178,0.03) 0%, transparent 60%);
     }
+    body::after { content: none; }
 
-    /* Dark: geometric hex-grid + triangular lattice + cyan dot matrix + scanlines */
-    .dark body::before, body.dark-bg::before {
-      background-image:
-        /* Triangular lattice */
-        linear-gradient(30deg, rgba(168,85,247,0.06) 1px, transparent 1px),
-        linear-gradient(150deg, rgba(168,85,247,0.05) 1px, transparent 1px),
-        /* Vertical grid */
-        linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px),
-        /* Hex dot pattern — offset rows */
-        radial-gradient(circle 0.7px, rgba(6,182,212,0.18) 0.7px, transparent 0.7px),
-        radial-gradient(circle 0.7px, rgba(168,85,247,0.1) 0.7px, transparent 0.7px),
-        /* Fine diagonal scanlines */
-        linear-gradient(60deg, rgba(168,85,247,0.025) 1px, transparent 1px),
-        linear-gradient(-60deg, rgba(6,182,212,0.02) 1px, transparent 1px);
-      background-size: 32px 56px, 32px 56px, 64px 64px, 22px 38px, 22px 38px, 44px 44px, 44px 44px;
-      background-position: 0 0, 0 0, 0 0, 0 0, 11px 19px, 0 0, 0 0;
-      opacity: 0.7;
-    }
-
-    /* Dark: mesh gradient — violet top-left, cyan bottom-right, subtle center pulse */
+    /* Dark: mesh gradient — violet top-left, cyan bottom-right */
     .mesh-bg {
       position: fixed; inset: 0; z-index: -1; pointer-events: none;
       background: transparent;
@@ -161,14 +149,16 @@
     }
     .dark .mesh-bg {
       background:
-        radial-gradient(ellipse 700px 500px at 10% 0%, rgba(168,85,247,0.12) 0%, transparent 65%),
-        radial-gradient(ellipse 600px 600px at 90% 95%, rgba(6,182,212,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 700px 500px at 10% 0%, rgba(168,85,247,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 600px 600px at 90% 95%, rgba(34,211,238,0.1) 0%, transparent 65%),
         radial-gradient(ellipse 300px 300px at 50% 40%, rgba(168,85,247,0.06) 0%, transparent 50%),
-        radial-gradient(ellipse 200px 200px at 70% 20%, rgba(6,182,212,0.04) 0%, transparent 60%),
-        radial-gradient(ellipse 400px 200px at 30% 80%, rgba(168,85,247,0.03) 0%, transparent 50%);
+        radial-gradient(ellipse 250px 250px at 70% 20%, rgba(34,211,238,0.05) 0%, transparent 60%);
     }
-
-    .dark body::after, body.dark-bg::after { opacity: 0; }
+    .dark body::before, body.dark-bg::before {
+      background:
+        radial-gradient(ellipse 800px 600px at 0% 0%, rgba(168,85,247,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 500px at 100% 100%, rgba(34,211,238,0.05) 0%, transparent 70%);
+    }
 
     /* ===== GLASSMORPHISM ===== */
     .glass-header {
@@ -208,8 +198,8 @@
       transition: all 0.25s cubic-bezier(0.65,0.05,0,1);
     }
     .dark .btn-accent {
-      background: linear-gradient(135deg, #a855f7, #06b6d4);
-      box-shadow: 0 0 20px rgba(168,85,247,0.3), 0 0 60px rgba(6,182,212,0.1);
+      background: linear-gradient(135deg, #a855f7, #22d3ee);
+      box-shadow: 0 0 24px rgba(168,85,247,0.35), 0 0 60px rgba(34,211,238,0.12);
     }
     .btn-accent:hover { filter: brightness(1.15); transform: translateY(-1px); }
     .btn-accent:active { transform: scale(0.97) translateY(0); filter: brightness(1); }
@@ -279,8 +269,8 @@
     /* Neon pulse for #1 card in dark mode */
     .dark .neon-pulse { animation: neonPulse 2.5s ease-in-out infinite alternate; }
     @keyframes neonPulse {
-      0%   { box-shadow: 0 0 16px rgba(168,85,247,0.4), 0 0 40px rgba(6,182,212,0.1); }
-      100% { box-shadow: 0 0 24px rgba(168,85,247,0.6), 0 0 60px rgba(6,182,212,0.2); }
+      0%   { box-shadow: 0 0 16px rgba(168,85,247,0.4), 0 0 40px rgba(34,211,238,0.1); }
+      100% { box-shadow: 0 0 24px rgba(168,85,247,0.6), 0 0 60px rgba(34,211,238,0.2); }
     }
 
     .stagger>*:nth-child(1){animation-delay:0s} .stagger>*:nth-child(2){animation-delay:0.06s} .stagger>*:nth-child(3){animation-delay:0.12s}
@@ -307,7 +297,7 @@
     /* Bottom nav active tab — dual-tone neon underline */
     .tab-active{position:relative}
     .tab-active::after{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:28px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;box-shadow:0 1px 6px var(--accent-glow)}
-    .dark .tab-active::after{box-shadow:0 0 12px var(--accent-glow),0 0 4px rgba(6,182,212,0.2)}
+    .dark .tab-active::after{box-shadow:0 0 12px var(--accent-glow),0 0 4px rgba(34,211,238,0.2)}
 
     /* ===== RANK BADGES — Progressive glow ===== */
     .rank-badge{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;letter-spacing:-0.5px;font-family:'Space Grotesk',sans-serif;transition:all 0.3s cubic-bezier(0.65,0.05,0,1)}
@@ -378,7 +368,7 @@
       box-shadow: 0 0 8px var(--accent-glow), 0 0 0 1.5px var(--accent);
     }
     .dark .card-tile-selected {
-      box-shadow: 0 0 12px var(--accent-glow), 0 0 20px rgba(6,182,212,0.08), 0 0 0 1.5px var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow), 0 0 20px rgba(34,211,238,0.08), 0 0 0 1.5px var(--accent);
     }
     .card-tile-selected::after {
       border-color: var(--accent) !important;
@@ -418,7 +408,9 @@
 <body>
 
 <div id="app" v-cloak :class="{'dark': isDark}">
-  <!-- Mesh gradient bg for dark mode -->
+  <!-- Background pattern layers -->
+  <div class="geo-pattern"></div>
+  <div class="geo-pattern-2"></div>
   <div class="mesh-bg"></div>
 
   <!-- HEADER -->
@@ -432,8 +424,8 @@
       </div>
       <div class="flex items-center gap-3">
         <!-- Theme toggle -->
-        <div class="theme-toggle" :style="{background: isDark?'rgba(168,85,247,0.15)':'rgba(14,116,144,0.1)'}" @click="toggleTheme">
-          <div class="knob flex items-center justify-center" :style="{transform:isDark?'translateX(24px)':'translateX(3px)', background:isDark?'#a855f7':'#0e7490'}">
+        <div class="theme-toggle" :style="{background: isDark?'rgba(168,85,247,0.18)':'rgba(8,145,178,0.12)'}" @click="toggleTheme">
+          <div class="knob flex items-center justify-center" :style="{transform:isDark?'translateX(24px)':'translateX(3px)', background:isDark?'#a855f7':'#0891b2'}">
             <svg v-if="!isDark" class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
             <svg v-else class="w-3.5 h-3.5 text-dark-600" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
           </div>
@@ -461,8 +453,8 @@
       <!-- Theme toggle on onboarding -->
       <div class="flex items-center justify-center gap-3 mb-6 slide-up" style="animation-delay:0.35s">
         <span class="text-xs font-medium" style="color:var(--text3)">Light</span>
-        <div class="theme-toggle" :style="{background: isDark?'rgba(168,85,247,0.15)':'rgba(14,116,144,0.1)'}" @click="toggleTheme">
-          <div class="knob flex items-center justify-center" :style="{transform:isDark?'translateX(24px)':'translateX(3px)', background:isDark?'#a855f7':'#0e7490'}">
+        <div class="theme-toggle" :style="{background: isDark?'rgba(168,85,247,0.18)':'rgba(8,145,178,0.12)'}" @click="toggleTheme">
+          <div class="knob flex items-center justify-center" :style="{transform:isDark?'translateX(24px)':'translateX(3px)', background:isDark?'#a855f7':'#0891b2'}">
             <svg v-if="!isDark" class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
             <svg v-else class="w-3.5 h-3.5" style="color:#09090b" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
           </div>
