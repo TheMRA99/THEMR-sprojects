@@ -255,9 +255,85 @@
     .glow { box-shadow: var(--glow); }
     .text-cyan { color: var(--accent2); }
 
-    /* ===== NEON LINE ACCENTS ===== */
+    /* ===== ANIMATED GRADIENT BORDER ===== */
+    @property --border-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @keyframes rotateBorder { to { --border-angle: 360deg; } }
+    .glow-border {
+      position: relative;
+      border: none !important;
+    }
+    .glow-border::before {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: inherit;
+      background: conic-gradient(from var(--border-angle), var(--accent), var(--accent2), transparent, var(--accent));
+      animation: rotateBorder 4s linear infinite;
+      z-index: -1;
+      opacity: 0.5;
+    }
+    .glow-border:hover::before { opacity: 1; }
+    .dark .glow-border::before { opacity: 0.7; }
+    .dark .glow-border:hover::before { opacity: 1; }
+
+    /* ===== ANIMATED GRADIENT TEXT ===== */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-gradient-text {
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent));
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    /* ===== PREMIUM SURFACE WITH INNER GLOW ===== */
+    .surface-premium {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      box-shadow: var(--surface-glow), inset 0 1px 0 rgba(255,255,255,0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.65,0.05,0,1);
+    }
+    .surface-premium:hover {
+      border-color: var(--accent);
+      box-shadow: var(--surface-glow-hover), inset 0 1px 0 rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+    .dark .surface-premium {
+      box-shadow: var(--surface-glow), inset 0 1px 0 rgba(255,255,255,0.02), 0 0 0 0 transparent;
+    }
+    .dark .surface-premium:hover {
+      box-shadow: 0 0 30px rgba(192,132,252,0.15), 0 0 0 1px rgba(192,132,252,0.15), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    /* ===== FLOATING LABEL EFFECT ===== */
+    .float-label { transition: all 0.3s cubic-bezier(0.65,0.05,0,1); }
+    .float-label:focus-within { transform: translateY(-2px); box-shadow: var(--surface-glow-hover); }
+
+    /* ===== NEON LINE ACCENTS (upgraded) ===== */
     .neon-line { height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2), transparent); border-radius: 2px; }
-    .dark .neon-line { box-shadow: 0 0 8px var(--accent-glow); }
+    .dark .neon-line { box-shadow: 0 0 12px var(--accent-glow), 0 0 4px rgba(34,211,238,0.15); }
+
+    /* ===== BREATHING GLOW on focused search ===== */
+    @keyframes breatheGlow {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(6,182,212,0.1); }
+      50% { box-shadow: 0 0 0 6px rgba(6,182,212,0.2), 0 0 20px rgba(6,182,212,0.1); }
+    }
+    .dark @keyframes breatheGlow {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(192,132,252,0.1); }
+      50% { box-shadow: 0 0 0 6px rgba(192,132,252,0.25), 0 0 24px rgba(192,132,252,0.1); }
+    }
+    input:focus, select:focus { animation: breatheGlow 2s ease-in-out infinite; }
 
     /* ===== ANIMATIONS — Snappy cubic-bezier(0.65,0.05,0,1) ===== */
     .pop-in { animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
@@ -572,7 +648,7 @@
         <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">
           <svg class="w-5 h-5" :style="{color: isDark?'#09090b':'#fff'}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
         </div>
-        <span class="font-display text-lg font-bold tracking-tight" :style="{color:'var(--text)'}">CARD<span class="dual-gradient-text">WISE</span></span>
+        <span class="font-display text-lg font-bold tracking-tight" :style="{color:'var(--text)'}">CARD<span class="animated-gradient-text">WISE</span></span>
       </div>
       <div class="flex items-center gap-3">
         <!-- Theme toggle -->
@@ -590,14 +666,18 @@
   <main class="max-w-lg mx-auto px-4 pb-28">
 
     <!-- ONBOARDING -->
-    <div v-if="page==='onboarding'" class="pt-20 text-center">
-      <div class="neon-line w-20 mx-auto mb-8 glow"></div>
-      <h1 class="font-display text-5xl font-black tracking-tighter mb-4 reveal" :style="{color:'var(--text)'}">CARD<span class="dual-gradient-text">WISE</span></h1>
-      <p class="text-xl mb-2 reveal-up" style="animation-delay:0.25s;color:var(--text2)">Never use the wrong card again.</p>
-      <p class="mb-14 max-w-xs mx-auto reveal-up" style="animation-delay:0.4s;color:var(--text3)">Instant recommendations on which card maximizes your rewards at every merchant in Singapore.</p>
+    <div v-if="page==='onboarding'" class="pt-16 text-center">
+      <div class="neon-line w-24 mx-auto mb-6 glow"></div>
+      <!-- Animated logo -->
+      <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center glow-border reveal" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">
+        <svg class="w-10 h-10" :style="{color:isDark?'#0a0a0a':'#fff'}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+      </div>
+      <h1 class="font-display text-5xl font-black tracking-tighter mb-4 reveal" :style="{color:'var(--text)'}">CARD<span class="animated-gradient-text">WISE</span></h1>
+      <p class="text-xl mb-2 reveal-up font-medium" style="animation-delay:0.25s;color:var(--text2)">Never use the wrong card again.</p>
+      <p class="mb-12 max-w-xs mx-auto reveal-up" style="animation-delay:0.4s;color:var(--text3)">Instant recommendations on which card maximizes your rewards at every merchant in Singapore.</p>
       <div class="space-y-4 text-left mb-12">
         <div v-for="(step,si) in [{n:'1',t:'Select your cards',d:'Tell us which cards are in your wallet'},{n:'2',t:'Where are you paying?',d:'Type a store or pick a category'},{n:'3',t:'See your best card',d:'Ranked by reward rate, instantly'}]" :key="si"
-             class="surface rounded-2xl p-5 flex items-start gap-4 slide-up" :style="{'animation-delay':(0.2+si*0.05)+'s'}">
+             class="surface-premium rounded-2xl p-5 flex items-start gap-4 slide-up" :style="{'animation-delay':(0.2+si*0.05)+'s'}">
           <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 font-display font-bold text-lg text-white" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">{{step.n}}</div>
           <div><p class="font-semibold" :style="{color:'var(--text)'}">{{step.t}}</p><p class="text-sm mt-0.5" style="color:var(--text3)">{{step.d}}</p></div>
         </div>
@@ -684,11 +764,17 @@
 
     <!-- HOME -->
     <div v-if="page==='home'" class="pt-5 page-enter">
-      <div class="mb-6">
-        <p class="text-sm font-medium uppercase tracking-widest mb-1" style="color:var(--text3)">Welcome back</p>
-        <h2 class="font-display text-3xl font-black tracking-tighter" :style="{color:'var(--text)'}">{{profile.name.split(' ')[0]}}<span class="dual-gradient-text">.</span></h2>
+      <div class="mb-6 flex items-end justify-between">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.2em] mb-1" style="color:var(--text3)">Welcome back</p>
+          <h2 class="font-display text-3xl font-black tracking-tighter" :style="{color:'var(--text)'}">{{profile.name.split(' ')[0]}}<span class="animated-gradient-text">.</span></h2>
+        </div>
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold" :style="{background:'var(--accent-bg)',color:'var(--accent)'}">
+          <span class="w-1.5 h-1.5 rounded-full" style="background:var(--accent);animation:neonPulse 2s ease-in-out infinite"></span>
+          {{userCards.length}} cards
+        </div>
       </div>
-      <div class="relative mb-4 store-search-wrap">
+      <div class="relative mb-4 store-search-wrap float-label">
         <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" style="color:var(--text3)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         <input v-model="storeSearch" @input="onStoreInput" @focus="showDrop=true" type="text" placeholder="Where are you paying?" class="w-full pl-12 pr-10 py-4 rounded-2xl border text-base transition-colors" :style="{background:'var(--bg3)',borderColor:'var(--surface-border)',color:'var(--text)'}">
         <button v-if="storeSearch" @click="storeSearch='';storeSuggestions=[];showDrop=false" class="absolute right-4 top-1/2 -translate-y-1/2" style="color:var(--text3)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
@@ -728,9 +814,9 @@
 
       <div class="flex items-center gap-4 mb-5"><div class="flex-1 neon-line" style="opacity:0.4"></div><span class="text-[10px] font-display font-bold uppercase tracking-[0.2em]" style="color:var(--text3)">or pick category</span><div class="flex-1 neon-line" style="opacity:0.4;transform:scaleX(-1)"></div></div>
       <div class="grid grid-cols-4 gap-2 mb-6">
-        <button v-for="cat in categories" :key="cat.id" @click="pickCategory(cat.id)" class="cat-btn flex flex-col items-center gap-1.5 p-3 rounded-2xl border" :style="{borderColor:'var(--surface-border)',background:'var(--surface)'}">
-          <span class="text-2xl leading-none">{{cat.icon}}</span>
-          <span class="text-[10px] font-semibold leading-tight text-center" style="color:var(--text3)">{{cat.label}}</span>
+        <button v-for="cat in categories" :key="cat.id" @click="pickCategory(cat.id)" class="cat-btn flex flex-col items-center gap-1.5 p-3.5 rounded-2xl border surface-premium" :style="{borderColor:'var(--surface-border)',background:'var(--surface)'}">
+          <span class="text-2xl leading-none drop-shadow-sm">{{cat.icon}}</span>
+          <span class="text-[10px] font-bold leading-tight text-center" style="color:var(--text3)">{{cat.label}}</span>
         </button>
       </div>
 
@@ -783,13 +869,17 @@
 
       <!-- TOOLS ROW -->
       <div class="mt-5 grid grid-cols-2 gap-3">
-        <button @click="go('compare')" class="p-4 rounded-2xl surface surface-h text-left">
-          <svg class="w-5 h-5 text-accent mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <button @click="go('compare')" class="p-4 rounded-2xl surface-premium text-left group">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center mb-2.5 transition-transform group-hover:scale-110" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">
+            <svg class="w-4.5 h-4.5" :style="{color:isDark?'#0a0a0a':'#fff'}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
           <p class="text-xs font-bold" :style="{color:'var(--text)'}">Compare Cards</p>
-          <p class="text-[10px] mt-0.5" style="color:var(--text3)">Side by side</p>
+          <p class="text-[10px] mt-0.5" style="color:var(--text3)">Side by side analysis</p>
         </button>
-        <button @click="go('billsplit')" class="p-4 rounded-2xl surface surface-h text-left">
-          <svg class="w-5 h-5 text-accent2 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <button @click="go('billsplit')" class="p-4 rounded-2xl surface-premium text-left group">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center mb-2.5 transition-transform group-hover:scale-110" style="background:linear-gradient(135deg,var(--accent2),var(--accent))">
+            <svg class="w-4.5 h-4.5" :style="{color:isDark?'#0a0a0a':'#fff'}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
           <p class="text-xs font-bold" :style="{color:'var(--text)'}">Bill Split</p>
           <p class="text-[10px] mt-0.5" style="color:var(--text3)">Who should pay?</p>
         </button>
@@ -816,7 +906,7 @@
       <div v-if="recommendations.length>0" class="stagger space-y-3">
         <div v-for="(rec,idx) in recommendations" :key="rec.card.id" class="pop-in rounded-2xl overflow-hidden" :class="idx===0?'glow neon-pulse':''">
           <template v-if="idx===0">
-            <div class="p-5 relative shimmer" :style="{background:rec.card.color}"><div class="card-gradient absolute inset-0"></div>
+            <div class="p-5 relative holo-card" :style="{background:rec.card.color}"><div class="card-gradient absolute inset-0"></div>
               <div class="relative">
                 <div class="flex items-center justify-between mb-4">
                   <div class="flex items-center gap-2"><div class="rank-badge rank-1">1</div><span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border" :style="{background:'rgba(255,255,255,0.1)',borderColor:'rgba(255,255,255,0.2)',color:'#fff'}">BEST CARD</span></div>
