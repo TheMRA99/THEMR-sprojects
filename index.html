@@ -819,133 +819,117 @@
     </div>
 
     <!-- HOME -->
-    <div v-if="page==='home'" class="pt-5 page-enter">
-      <div class="mb-6 flex items-end justify-between">
+    <div v-if="page==='home'" class="pt-4 page-enter">
+      <div class="mb-4 flex items-end justify-between">
         <div>
-          <p class="text-[10px] font-bold uppercase tracking-[0.2em] mb-1" style="color:var(--text3)">Welcome back</p>
-          <h2 class="font-display text-3xl font-black tracking-tighter" :style="{color:'var(--text)'}">{{profile.name.split(' ')[0]}}<span class="animated-gradient-text">.</span></h2>
+          <p class="text-[10px] font-bold uppercase tracking-[0.2em] mb-0.5" style="color:var(--text3)">Welcome back</p>
+          <h2 class="font-display text-2xl font-black tracking-tighter" :style="{color:'var(--text)'}">{{profile.name.split(' ')[0]}}<span class="animated-gradient-text">.</span></h2>
         </div>
-        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold" :style="{background:'var(--accent-bg)',color:'var(--accent)'}">
+        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold" :style="{background:'var(--accent-bg)',color:'var(--accent)'}">
           <span class="w-1.5 h-1.5 rounded-full" style="background:var(--accent);animation:neonPulse 2s ease-in-out infinite"></span>
           {{userCards.length}} cards
         </div>
       </div>
-      <div class="relative mb-4 store-search-wrap float-label">
-        <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" style="color:var(--text3)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        <input v-model="storeSearch" @input="onStoreInput" @focus="showDrop=true" type="text" placeholder="Where are you paying?" class="w-full pl-12 pr-10 py-4 rounded-2xl border text-base transition-colors" :style="{background:'var(--bg3)',borderColor:'var(--surface-border)',color:'var(--text)'}">
-        <button v-if="storeSearch" @click="storeSearch='';storeSuggestions=[];showDrop=false" class="absolute right-4 top-1/2 -translate-y-1/2" style="color:var(--text3)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
-        <div v-if="showDrop&&storeSuggestions.length>0" class="absolute left-0 right-0 top-full mt-1 rounded-2xl border shadow-2xl z-40 max-h-64 overflow-y-auto scroll-hide" :style="{background:'var(--surface)',borderColor:'var(--surface-border)'}">
-          <button v-for="s in storeSuggestions" :key="s.name+(s.source||'')" @click="pickStore(s)" class="w-full text-left px-4 py-3 flex items-center gap-3 border-b last:border-0 transition-colors" :style="{borderColor:'var(--surface-border)'}" onmouseover="this.style.background='var(--surface-hover)'" onmouseout="this.style.background='transparent'">
-            <span class="text-lg">{{catIcon(s.category)}}</span>
-            <div class="flex-1 min-w-0">
-              <p class="font-medium text-sm truncate" :style="{color:'var(--text)'}">{{s.name}}</p>
-              <p class="text-xs truncate" style="color:var(--text3)">{{s.sub||catLabel(s.category)}}</p>
-            </div>
-          </button>
+      <!-- Search + Location row -->
+      <div class="flex gap-2 mb-3">
+        <div class="relative flex-1 store-search-wrap float-label">
+          <svg class="w-4.5 h-4.5 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" style="color:var(--text3)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input v-model="storeSearch" @input="onStoreInput" @focus="showDrop=true" type="text" placeholder="Where are you paying?" class="w-full pl-10 pr-9 py-3 rounded-2xl border text-sm transition-colors" :style="{background:'var(--bg3)',borderColor:'var(--surface-border)',color:'var(--text)'}">
+          <button v-if="storeSearch" @click="storeSearch='';storeSuggestions=[];showDrop=false" class="absolute right-3 top-1/2 -translate-y-1/2" style="color:var(--text3)"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+          <div v-if="showDrop&&storeSuggestions.length>0" class="absolute left-0 right-0 top-full mt-1 rounded-2xl border shadow-2xl z-40 max-h-64 overflow-y-auto scroll-hide" :style="{background:'var(--surface)',borderColor:'var(--surface-border)'}">
+            <button v-for="s in storeSuggestions" :key="s.name+(s.source||'')" @click="pickStore(s)" class="w-full text-left px-4 py-3 flex items-center gap-3 border-b last:border-0 transition-colors" :style="{borderColor:'var(--surface-border)'}" onmouseover="this.style.background='var(--surface-hover)'" onmouseout="this.style.background='transparent'">
+              <span class="text-lg">{{catIcon(s.category)}}</span>
+              <div class="flex-1 min-w-0">
+                <p class="font-medium text-sm truncate" :style="{color:'var(--text)'}">{{s.name}}</p>
+                <p class="text-xs truncate" style="color:var(--text3)">{{s.sub||catLabel(s.category)}}</p>
+              </div>
+            </button>
+          </div>
         </div>
+        <button v-if="geoSupported" @click="useMyLocation" :disabled="geoLoading" class="w-12 h-12 rounded-2xl border flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-40" :style="{borderColor:'var(--surface-border)',background:'var(--surface)'}">
+          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </button>
       </div>
-      <button v-if="geoSupported" @click="useMyLocation" :disabled="geoLoading" class="w-full mb-5 py-3 rounded-2xl border text-sm font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-40" :style="{borderColor:'var(--surface-border)',background:'var(--surface)',color:'var(--text2)'}">
-        <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        {{geoLoading?'Detecting...':'Use my location'}}
-      </button>
       <!-- Recent searches -->
-      <div v-if="recentSearches.length>0" class="mb-5">
-        <p class="text-[10px] font-display font-bold uppercase tracking-[0.2em] mb-2" style="color:var(--text3)">Recent</p>
+      <div v-if="recentSearches.length>0" class="mb-3">
         <div class="flex gap-2 overflow-x-auto scroll-hide pb-1 -mx-4 px-4">
-          <button v-for="rs in recentSearches" :key="rs.name" @click="pickStore(rs)" class="flex items-center gap-1.5 px-3 py-2 rounded-full border whitespace-nowrap flex-shrink-0 text-xs font-medium transition-all surface-h" :style="{borderColor:'var(--surface-border)',background:'var(--surface)',color:'var(--text2)'}">
+          <button v-for="rs in recentSearches" :key="rs.name" @click="pickStore(rs)" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border whitespace-nowrap flex-shrink-0 text-xs font-medium transition-all surface-h" :style="{borderColor:'var(--surface-border)',background:'var(--surface)',color:'var(--text2)'}">
             <span class="text-sm">{{catIcon(rs.category)}}</span>{{rs.name}}
           </button>
         </div>
       </div>
       <!-- QUICK SCENARIOS -->
-      <div v-if="userCards.length>0" class="mb-5">
-        <p class="text-[10px] font-display font-bold uppercase tracking-[0.2em] mb-2" style="color:var(--text3)">Quick Scenarios</p>
+      <div v-if="userCards.length>0" class="mb-3">
+        <p class="text-[10px] font-display font-bold uppercase tracking-[0.2em] mb-1.5" style="color:var(--text3)">Quick Scenarios</p>
         <div class="flex gap-2 overflow-x-auto scroll-hide pb-1 -mx-4 px-4">
-          <button v-for="sc in scenarios" :key="sc.label" @click="pickCategory(sc.cat)" class="scenario-pill">
-            <span class="text-lg">{{sc.icon}}</span>
-            <div class="text-left"><p class="text-xs font-semibold" :style="{color:'var(--text)'}">{{sc.label}}</p><p class="text-[10px]" style="color:var(--text3)">Best: {{sc.best}}</p></div>
+          <button v-for="sc in scenarios" :key="sc.label" @click="pickCategory(sc.cat)" class="scenario-pill" style="padding:8px 12px">
+            <span class="text-base">{{sc.icon}}</span>
+            <div class="text-left"><p class="text-[11px] font-semibold" :style="{color:'var(--text)'}">{{sc.label}}</p><p class="text-[9px]" style="color:var(--text3)">Best: {{sc.best}}</p></div>
           </button>
         </div>
       </div>
 
-      <div class="flex items-center gap-4 mb-5"><div class="flex-1 neon-line" style="opacity:0.4"></div><span class="text-[10px] font-display font-bold uppercase tracking-[0.2em]" style="color:var(--text3)">or pick category</span><div class="flex-1 neon-line" style="opacity:0.4;transform:scaleX(-1)"></div></div>
-      <div class="grid grid-cols-4 gap-2 mb-6">
-        <button v-for="cat in categories" :key="cat.id" @click="pickCategory(cat.id)" class="cat-btn flex flex-col items-center gap-1.5 p-3.5 rounded-2xl border surface-premium" :style="{borderColor:'var(--surface-border)',background:'var(--surface)'}">
-          <span class="text-2xl leading-none drop-shadow-sm">{{cat.icon}}</span>
-          <span class="text-[10px] font-bold leading-tight text-center" style="color:var(--text3)">{{cat.label}}</span>
+      <div class="flex items-center gap-3 mb-3"><div class="flex-1 neon-line" style="opacity:0.4"></div><span class="text-[9px] font-display font-bold uppercase tracking-[0.2em]" style="color:var(--text3)">pick category</span><div class="flex-1 neon-line" style="opacity:0.4;transform:scaleX(-1)"></div></div>
+      <div class="grid grid-cols-4 gap-2 mb-4">
+        <button v-for="cat in categories" :key="cat.id" @click="pickCategory(cat.id)" class="cat-btn flex flex-col items-center gap-1 p-3 rounded-2xl border surface-premium" :style="{borderColor:'var(--surface-border)',background:'var(--surface)'}">
+          <span class="text-xl leading-none drop-shadow-sm">{{cat.icon}}</span>
+          <span class="text-[9px] font-bold leading-tight text-center" style="color:var(--text3)">{{cat.label}}</span>
         </button>
       </div>
 
-      <!-- SAVINGS DASHBOARD -->
-      <div v-if="userCards.length>0" class="savings-card surface p-5 mb-5 sr sr-scale">
-        <div class="relative z-10">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">
-              <svg class="w-5 h-5" :style="{color:isDark?'#0a0a0a':'#fff'}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-            </div>
-            <div><p class="font-display font-black tracking-tighter uppercase dual-gradient-text text-sm">Savings Potential</p><p class="text-[10px]" style="color:var(--text3)">Based on average SG spending</p></div>
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="p-3 rounded-xl" :style="{background:'var(--accent-bg)'}">
-              <p class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--text3)">Monthly</p>
-              <p class="text-2xl font-display font-black dual-gradient-text">S${{monthlySavings}}</p>
-            </div>
-            <div class="p-3 rounded-xl" :style="{background:'var(--accent-bg)'}">
-              <p class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--text3)">Yearly</p>
-              <p class="text-2xl font-display font-black dual-gradient-text">S${{yearlySavings}}</p>
-            </div>
-          </div>
-          <button @click="go('optimizer')" class="w-full mt-3 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all" :style="{background:'var(--accent-bg)',color:'var(--accent)'}">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-            Open Spending Optimizer
-          </button>
-        </div>
-      </div>
-
-      <div v-if="userCards.length>0&&topCategories.length>0" class="sr">
-        <div class="flex items-center gap-3 mb-4"><div class="w-1.5 h-6 rounded-full" style="background:linear-gradient(180deg,var(--accent),var(--accent2))"></div><p class="font-display font-black tracking-tighter uppercase dual-gradient-text">YOUR BEST CARDS</p></div>
-        <div class="space-y-2">
-          <div v-for="tc in topCategories" :key="tc.id" @click="pickCategory(tc.id)" class="flex items-center gap-3 p-3.5 rounded-2xl surface surface-h cursor-pointer">
-            <span class="text-lg">{{tc.icon}}</span>
-            <div class="flex-1 min-w-0"><p class="text-sm font-semibold truncate" :style="{color:'var(--text)'}">{{tc.label}}</p><p class="text-[11px] truncate" style="color:var(--text3)">{{tc.cardName}}</p><p v-if="tc.minSpend" class="text-[10px] font-semibold" style="color:#d97706">Min S${{tc.minSpend}}/mo</p></div>
-            <span class="text-sm font-display font-bold text-accent flex-shrink-0">{{tc.rate}}</span>
+      <!-- SAVINGS + WALLET combined row -->
+      <div v-if="userCards.length>0" class="grid grid-cols-2 gap-2 mb-3">
+        <div class="savings-card surface p-3.5 rounded-2xl" @click="go('optimizer')" style="cursor:pointer">
+          <div class="relative z-10">
+            <p class="text-[9px] font-display font-bold uppercase tracking-widest mb-2 dual-gradient-text">Savings Potential</p>
+            <p class="text-xl font-display font-black dual-gradient-text leading-none">S${{monthlySavings}}</p>
+            <p class="text-[9px] mt-0.5" style="color:var(--text3)">monthly &middot; S${{yearlySavings}}/yr</p>
           </div>
         </div>
-      </div>
-      <!-- Daily Tip -->
-      <div v-if="dailyTip" class="mt-6 p-4 rounded-2xl surface" style="border-left:3px solid var(--accent2)">
-        <div class="flex items-start gap-3">
-          <span class="text-lg flex-shrink-0">{{dailyTip.icon}}</span>
-          <div>
-            <p class="text-[10px] font-display font-bold uppercase tracking-widest mb-1" style="color:var(--accent2)">Daily Tip</p>
-            <p class="text-sm leading-relaxed" style="color:var(--text2)">{{dailyTip.text}}</p>
+        <div class="surface p-3.5 rounded-2xl" @click="go('mycards')" style="cursor:pointer">
+          <p class="text-[9px] font-display font-bold uppercase tracking-widest mb-2" style="color:var(--text3)">Wallet</p>
+          <div class="flex -space-x-1.5 mb-1.5">
+            <div v-for="cid in userCards.slice(0,6)" :key="cid" class="w-8 h-5 rounded flex items-center justify-center text-white text-[6px] font-bold" :style="{border:'1.5px solid var(--bg)',background:getCard(cid)?getCard(cid).color:'#333'}">{{(getCard(cid)?getCard(cid).bank:'').substring(0,3).toUpperCase()}}</div>
+            <div v-if="userCards.length>6" class="w-8 h-5 rounded flex items-center justify-center text-[7px] font-bold" :style="{border:'1.5px solid var(--bg)',background:'var(--text4)',color:'var(--text3)'}">+{{userCards.length-6}}</div>
           </div>
+          <p class="text-[9px] font-medium" style="color:var(--text3)">{{userCards.length}} cards &middot; Edit</p>
         </div>
       </div>
 
       <!-- TOOLS ROW -->
-      <div class="mt-5 grid grid-cols-2 gap-3 sr">
-        <button @click="go('compare')" class="p-4 rounded-2xl surface-premium text-left group">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center mb-2.5 transition-transform group-hover:scale-110" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">
-            <svg class="w-4.5 h-4.5" :style="{color:isDark?'#0a0a0a':'#fff'}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+      <div v-if="userCards.length>0" class="grid grid-cols-2 gap-2 mb-3">
+        <button @click="go('compare')" class="p-3 rounded-2xl surface-premium text-left group flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">
+            <svg class="w-4 h-4" :style="{color:isDark?'#0a0a0a':'#fff'}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           </div>
-          <p class="text-xs font-bold" :style="{color:'var(--text)'}">Compare Cards</p>
-          <p class="text-[10px] mt-0.5" style="color:var(--text3)">Side by side analysis</p>
+          <div><p class="text-[11px] font-bold" :style="{color:'var(--text)'}">Compare</p><p class="text-[9px]" style="color:var(--text3)">Side by side</p></div>
         </button>
-        <button @click="go('billsplit')" class="p-4 rounded-2xl surface-premium text-left group">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center mb-2.5 transition-transform group-hover:scale-110" style="background:linear-gradient(135deg,var(--accent2),var(--accent))">
-            <svg class="w-4.5 h-4.5" :style="{color:isDark?'#0a0a0a':'#fff'}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <button @click="go('billsplit')" class="p-3 rounded-2xl surface-premium text-left group flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style="background:linear-gradient(135deg,var(--accent2),var(--accent))">
+            <svg class="w-4 h-4" :style="{color:isDark?'#0a0a0a':'#fff'}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
-          <p class="text-xs font-bold" :style="{color:'var(--text)'}">Bill Split</p>
-          <p class="text-[10px] mt-0.5" style="color:var(--text3)">Who should pay?</p>
+          <div><p class="text-[11px] font-bold" :style="{color:'var(--text)'}">Bill Split</p><p class="text-[9px]" style="color:var(--text3)">Who pays?</p></div>
         </button>
       </div>
 
-      <div class="mt-4 p-4 rounded-2xl surface">
-        <div class="flex items-center justify-between mb-3"><p class="text-sm font-display font-bold uppercase tracking-wider" style="color:var(--text3)">Wallet</p><div class="flex items-center gap-3"><button @click="startAddCard('home')" class="text-xs font-bold uppercase tracking-wider dual-gradient-text flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>Add</button><button @click="go('mycards')" class="text-xs font-bold uppercase tracking-wider dual-gradient-text">Edit</button></div></div>
-        <div class="flex -space-x-2">
-          <div v-for="cid in userCards.slice(0,8)" :key="cid" class="w-9 h-6 rounded-md border-2 flex items-center justify-center text-white text-[7px] font-bold" :style="{borderColor:'var(--bg)',background:getCard(cid)?getCard(cid).color:'#333'}">{{(getCard(cid)?getCard(cid).bank:'').substring(0,3).toUpperCase()}}</div>
-          <div v-if="userCards.length>8" class="w-9 h-6 rounded-md border-2 flex items-center justify-center text-[8px] font-bold" :style="{borderColor:'var(--bg)',background:'var(--text4)',color:'var(--text3)'}">+{{userCards.length-8}}</div>
+      <!-- YOUR BEST CARDS — collapsed, shows top 4 only -->
+      <div v-if="userCards.length>0&&topCategories.length>0" class="mb-3">
+        <div class="flex items-center gap-2 mb-2"><div class="w-1 h-4 rounded-full" style="background:linear-gradient(180deg,var(--accent),var(--accent2))"></div><p class="text-[10px] font-display font-bold tracking-tighter uppercase dual-gradient-text">YOUR BEST CARDS</p></div>
+        <div class="grid grid-cols-2 gap-2">
+          <div v-for="tc in topCategories.slice(0,4)" :key="tc.id" @click="pickCategory(tc.id)" class="flex items-center gap-2 p-2.5 rounded-xl surface surface-h cursor-pointer">
+            <span class="text-base">{{tc.icon}}</span>
+            <div class="flex-1 min-w-0"><p class="text-[11px] font-semibold truncate" :style="{color:'var(--text)'}">{{tc.label}}</p><p class="text-[9px] truncate" style="color:var(--text3)">{{tc.cardName}}</p></div>
+            <span class="text-[11px] font-display font-bold text-accent flex-shrink-0">{{tc.rate}}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Daily Tip — compact -->
+      <div v-if="dailyTip" class="p-3 rounded-2xl surface flex items-center gap-3" style="border-left:3px solid var(--accent2)">
+        <span class="text-base flex-shrink-0">{{dailyTip.icon}}</span>
+        <div class="min-w-0">
+          <p class="text-[9px] font-display font-bold uppercase tracking-widest" style="color:var(--accent2)">Tip</p>
+          <p class="text-[11px] leading-snug truncate" style="color:var(--text2)">{{dailyTip.text}}</p>
         </div>
       </div>
     </div>
@@ -1348,7 +1332,21 @@
             <button @click="showDeleteConfirm=true" class="w-full py-2.5 rounded-xl text-sm font-medium transition-colors" style="background:rgba(239,68,68,0.1);color:#ef4444">Delete All Data</button>
           </div>
         </div>
-        <div class="p-4 rounded-2xl surface text-center"><div class="neon-line w-10 mx-auto mb-3"></div><p class="text-[10px] font-display font-bold uppercase tracking-widest" style="color:var(--text4)">VERSO v6.0 &middot; By Muneer Ahmed &middot; Local only</p></div>
+        <div class="p-5 rounded-2xl surface text-center">
+          <div class="neon-line w-10 mx-auto mb-4"></div>
+          <!-- Signature monogram -->
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl flex items-center justify-center glow-border" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">
+            <span class="text-lg font-brand" :style="{color:isDark?'#0a0a0a':'#fff'}">MA</span>
+          </div>
+          <p class="text-[10px] font-display font-bold uppercase tracking-[0.25em] mb-1" style="color:var(--text3)">Designed &amp; Built by</p>
+          <p class="text-sm font-brand animated-gradient-text mb-1">Muneer Ahmed</p>
+          <p class="text-[9px] uppercase tracking-[0.3em] mb-3" style="color:var(--text4)">Ahmed Khaandaan &middot; Est. 2025</p>
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="w-1 h-1 rounded-full" style="background:var(--accent)"></span>
+            <p class="text-[9px] font-display font-bold uppercase tracking-widest" style="color:var(--text4)">VERSO v7.0 &middot; All data local</p>
+            <span class="w-1 h-1 rounded-full" style="background:var(--accent2)"></span>
+          </div>
+        </div>
       </div>
       <div v-if="showDeleteConfirm" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop" style="background:rgba(0,0,0,0.6)" @click.self="showDeleteConfirm=false">
         <div class="rounded-2xl p-6 w-full max-w-sm border modal-content" :style="{background:'var(--surface)',borderColor:'var(--surface-border)'}">
