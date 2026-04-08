@@ -1,0 +1,28 @@
+{
+  "name": "verso",
+  "version": "7.0.0",
+  "description": "VERSO — The smartest way to maximize card rewards in Singapore",
+  "main": "index.js",
+  "scripts": {
+    "build": "cp index.html www/index.html && npx cap copy android",
+    "open": "npx cap open android",
+    "sync": "npx cap sync android"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheMRA99/THEMR-sprojects.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TheMRA99/THEMR-sprojects/issues"
+  },
+  "homepage": "https://github.com/TheMRA99/THEMR-sprojects#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.3.0",
+    "@capacitor/cli": "^8.3.0",
+    "@capacitor/core": "^8.3.0"
+  }
+}

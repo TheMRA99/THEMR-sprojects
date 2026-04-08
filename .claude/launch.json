@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "verso",
+      "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
+      "runtimeArgs": ["-e", "require('http').createServer((q,r)=>{let f=q.url==='/'?'/index.html':q.url;require('fs').readFile('.'+f,(e,d)=>{if(e){r.writeHead(404);r.end('Not found');}else{let t=f.endsWith('.js')?'application/javascript':f.endsWith('.css')?'text/css':'text/html';r.writeHead(200,{'Content-Type':t+';charset=utf-8'});r.end(d);}});}).listen(3456,()=>console.log('Server on 3456'))"],
+      "port": 3456
+    }
+  ]
+}
