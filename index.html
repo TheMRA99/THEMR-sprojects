@@ -376,9 +376,11 @@
     .dark input:focus,.dark select:focus,.dark button:focus-visible{box-shadow:0 0 12px var(--accent-glow)}
     input,select{caret-color:var(--accent)}
 
-    .cat-btn{transition:all 0.25s cubic-bezier(0.65,0.05,0,1);position:relative}
+    .cat-btn{transition:all 0.25s cubic-bezier(0.65,0.05,0,1);position:relative;overflow:hidden}
+    .cat-btn::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--ripple-x,50%) var(--ripple-y,50%),var(--accent) 0%,transparent 70%);opacity:0;transition:opacity 0.4s}
+    .cat-btn:active::after{opacity:0.12;transition:opacity 0s}
     .cat-btn:hover{transform:translateY(-2px);box-shadow:var(--surface-glow-hover);border-color:var(--accent) !important}
-    .cat-btn:active{transform:scale(0.93) translateY(0)}
+    .cat-btn:active{transform:scale(0.9) translateY(0)}
 
     /* Shimmer on #1 result card */
     .shimmer{position:relative;overflow:hidden}
@@ -1168,7 +1170,7 @@
       <div class="space-y-2 mb-6">
         <div v-for="cat in categories" :key="cat.id" class="flex items-center justify-between p-3 rounded-xl surface">
           <div class="flex items-center gap-2"><span class="text-lg">{{cat.icon}}</span><span class="text-sm font-medium" :style="{color:'var(--text2)'}">{{cat.label}}</span></div>
-          <div class="flex items-center gap-1"><span class="text-xs font-bold" style="color:var(--text3)">S$</span><input v-model.number="optBudget[cat.id]" type="number" min="0" step="50" placeholder="0" class="opt-input"></div>
+          <div class="flex items-center gap-1"><span class="text-xs font-bold" style="color:var(--text3)">S$</span><input v-model.number="optBudget[cat.id]" type="number" min="0" step="50" :placeholder="({online:'~300',dining:'~400',groceries:'~500',transport:'~200',contactless:'~150',petrol:'~200',travel:'~100',entertainment:'~80',telco:'~60',utilities:'~120',general:'~200'})[cat.id]||'0'" class="opt-input"></div>
         </div>
       </div>
       <!-- Quick presets -->
@@ -1394,28 +1396,28 @@
             <button @click="showDeleteConfirm=true" class="w-full py-2.5 rounded-xl text-sm font-medium transition-colors" style="background:rgba(239,68,68,0.08);color:#ef4444">Delete All Data</button>
           </div>
         </div>
-        <div class="p-5 rounded-2xl text-center" :style="{background:isDark?'linear-gradient(180deg,rgba(14,13,12,0.96),rgba(8,7,6,0.98))':'linear-gradient(180deg,rgba(250,249,247,0.98),rgba(244,242,238,0.96))',border:'1px solid '+(isDark?'rgba(180,160,120,0.08)':'rgba(140,120,80,0.07)'),boxShadow:isDark?'0 4px 24px rgba(0,0,0,0.4)':'0 2px 12px rgba(100,90,60,0.04)'}">
+        <div class="p-5 rounded-2xl text-center" :style="{background:isDark?'linear-gradient(180deg,rgba(10,2,6,0.96),rgba(6,2,10,0.98))':'linear-gradient(180deg,rgba(250,246,248,0.98),rgba(244,238,242,0.96))',border:'1px solid '+(isDark?'rgba(251,113,133,0.08)':'rgba(159,18,57,0.07)'),boxShadow:isDark?'0 4px 24px rgba(0,0,0,0.4)':'0 2px 12px rgba(159,18,57,0.04)'}">
           <!-- Thin rule top -->
-          <div class="mx-auto mb-4" :style="{width:'40px',height:'1px',background:isDark?'rgba(160,145,110,0.15)':'rgba(120,105,70,0.1)'}"></div>
+          <div class="mx-auto mb-4" :style="{width:'40px',height:'1px',background:isDark?'rgba(251,113,133,0.15)':'rgba(159,18,57,0.1)'}"></div>
           <!-- Minimal crest with signature MA -->
           <svg class="mx-auto mb-3" width="48" height="56" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="crest-stroke" x1="0" y1="0" x2="0.5" y2="1"><stop offset="0%" :stop-color="isDark?'rgba(180,160,120,0.35)':'rgba(120,105,70,0.25)'"/><stop offset="100%" :stop-color="isDark?'rgba(150,135,100,0.2)':'rgba(100,85,55,0.15)'"/></linearGradient>
+              <linearGradient id="crest-stroke" x1="0" y1="0" x2="0.5" y2="1"><stop offset="0%" :stop-color="isDark?'rgba(251,113,133,0.4)':'rgba(159,18,57,0.25)'"/><stop offset="100%" :stop-color="isDark?'rgba(192,132,252,0.25)':'rgba(124,58,237,0.15)'"/></linearGradient>
             </defs>
             <!-- Shield outline only — thin, understated -->
             <path d="M60 8 L104 26 L104 60 Q104 96 60 126 Q16 96 16 60 L16 26 Z" fill="none" stroke="url(#crest-stroke)" stroke-width="1.5"/>
             <!-- MA monogram — bold, heavy, masculine -->
-            <text x="60" y="82" text-anchor="middle" :fill="isDark?'rgba(230,225,210,0.8)':'rgba(60,55,35,0.7)'" font-size="46" font-family="'Sora','Arial Black',sans-serif" font-weight="900" letter-spacing="-2">MA</text>
+            <text x="60" y="82" text-anchor="middle" :fill="isDark?'rgba(251,113,133,0.7)':'rgba(159,18,57,0.6)'" font-size="46" font-family="'Sora','Arial Black',sans-serif" font-weight="900" letter-spacing="-2">MA</text>
             <!-- Subtle underline flourish beneath signature -->
-            <path d="M36 88 Q48 95 60 90 Q72 85 84 90" fill="none" :stroke="isDark?'rgba(180,160,120,0.2)':'rgba(120,105,70,0.15)'" stroke-width="0.8" stroke-linecap="round"/>
+            <path d="M36 88 Q48 95 60 90 Q72 85 84 90" fill="none" :stroke="isDark?'rgba(192,132,252,0.2)':'rgba(124,58,237,0.15)'" stroke-width="0.8" stroke-linecap="round"/>
           </svg>
-          <!-- Name — bold uppercase -->
-          <p class="mb-0.5" style="font-family:'Sora',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;" :style="{color:isDark?'rgba(220,215,195,0.5)':'rgba(60,55,35,0.45)'}">Muneer Ahmed</p>
+          <!-- Name — bold uppercase (dynamic) -->
+          <p class="mb-0.5" style="font-family:'Sora',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;" :style="{color:isDark?'rgba(250,240,244,0.5)':'rgba(26,10,18,0.45)'}">Muneer Ahmed</p>
           <!-- House name — whisper quiet -->
-          <p class="text-[7px] uppercase mb-2.5" style="letter-spacing:0.28em;" :style="{color:isDark?'rgba(160,145,110,0.2)':'rgba(100,85,55,0.18)'}">Ahmed Khaandaan</p>
+          <p class="text-[7px] uppercase mb-2.5" style="letter-spacing:0.28em;" :style="{color:isDark?'rgba(251,113,133,0.2)':'rgba(159,18,57,0.18)'}">Ahmed Khaandaan</p>
           <!-- Thin rule bottom -->
-          <div class="mx-auto mb-1.5" :style="{width:'24px',height:'1px',background:isDark?'rgba(160,145,110,0.1)':'rgba(120,105,70,0.07)'}"></div>
-          <p class="text-[7px] uppercase" style="letter-spacing:0.22em;" :style="{color:isDark?'rgba(160,145,110,0.18)':'rgba(100,85,55,0.15)'}">VERSO v7.0</p>
+          <div class="mx-auto mb-1.5" :style="{width:'24px',height:'1px',background:isDark?'rgba(192,132,252,0.1)':'rgba(124,58,237,0.07)'}"></div>
+          <p class="text-[7px] uppercase" style="letter-spacing:0.22em;" :style="{color:isDark?'rgba(192,132,252,0.18)':'rgba(124,58,237,0.15)'}">VERSO v7.0</p>
         </div>
       </div>
       <div v-if="showDeleteConfirm" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop" style="background:rgba(0,0,0,0.6)" @click.self="showDeleteConfirm=false">
@@ -1614,7 +1616,7 @@ V.createApp({
     var showHeader=V.computed(function(){return page.value!=='onboarding'&&page.value!=='setup-name'&&page.value!=='setup-cards'&&page.value!=='add-card';});
 
     /* ===== NEW FEATURE STATE ===== */
-    var optBudget=V.ref({online:0,dining:0,groceries:0,transport:0,contactless:0,petrol:0,travel:0,entertainment:0,telco:0,utilities:0,general:0});
+    var optBudget=V.ref({online:null,dining:null,groceries:null,transport:null,contactless:null,petrol:null,travel:null,entertainment:null,telco:null,utilities:null,general:null});
     var compareCards=V.ref(['','','']);
     var billAmount=V.ref(0);
     var billCategory=V.ref('dining');
@@ -1640,7 +1642,7 @@ V.createApp({
     var yearlySavings=V.computed(function(){return(parseFloat(monthlySavings.value)*12).toFixed(0);});
 
     /* ===== QUICK SCENARIOS ===== */
-    var scenarios=V.computed(function(){if(userCards.value.length===0)return[];var sc=[{label:'Grocery Run',icon:'\uD83D\uDED2',cat:'groceries'},{label:'Weekend Dining',icon:'\uD83C\uDF7D\uFE0F',cat:'dining'},{label:'Online Shopping',icon:'\uD83D\uDCBB',cat:'online'},{label:'Fill Up Petrol',icon:'\u26FD',cat:'petrol'},{label:'Overseas Trip',icon:'\u2708\uFE0F',cat:'travel'}];return sc.map(function(s){var best=null,br=0;for(var i=0;i<userCards.value.length;i++){var card=allCards.value.find(function(c){return c.id===userCards.value[i];});if(card&&(card.rates[s.cat]||0)>br){br=card.rates[s.cat]||0;best=card;}}s.best=best?(best.bank+' '+fmtRate(br)):'No card';return s;});});
+    var scenarios=V.computed(function(){if(userCards.value.length===0)return[];var sc=[{label:'Grocery Run',icon:'\uD83D\uDED2',cat:'groceries'},{label:'Weekend Dining',icon:'\uD83C\uDF7D\uFE0F',cat:'dining'},{label:'Online Shopping',icon:'\uD83D\uDCBB',cat:'online'},{label:'Fill Up Petrol',icon:'\u26FD',cat:'petrol'},{label:'Overseas Trip',icon:'\u2708\uFE0F',cat:'travel'}];return sc.map(function(s){var best=null,br=0;for(var i=0;i<userCards.value.length;i++){var card=allCards.value.find(function(c){return c.id===userCards.value[i];});if(card&&(card.rates[s.cat]||0)>br){br=card.rates[s.cat]||0;best=card;}}s.best=best?(best.bank+' '+best.name.split(' ').slice(0,2).join(' ')+' '+fmtRate(br)):'No card';return s;});});
 
     /* ===== SPENDING OPTIMIZER ===== */
     var optTotalSpend=V.computed(function(){var t=0;for(var k in optBudget.value)t+=(optBudget.value[k]||0);return t;});
