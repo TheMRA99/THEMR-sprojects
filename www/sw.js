@@ -1,5 +1,5 @@
-var CACHE='verso-v7';
-var URLS=['./', './index.html'];
+var CACHE='verso-v11';
+var URLS=['./', './index.html', './privacy.html', './manifest.webmanifest', './cards.json', './apple-touch-icon.png', './favicon.png', './makers-mark.png'];
 self.addEventListener('install', function(e) {
   e.waitUntil(caches.open(CACHE).then(function(c) { return c.addAll(URLS); }));
   self.skipWaiting();

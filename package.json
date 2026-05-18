@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "icons": "npx @capacitor/assets generate --iconBackgroundColor '#0a0206' --iconBackgroundColorDark '#0a0206' --splashBackgroundColor '#0a0206' --splashBackgroundColorDark '#0a0206'",
-    "copy-www": "mkdir -p www && cp index.html www/index.html && cp privacy.html www/privacy.html && cp sw.js www/sw.js && cp manifest.webmanifest www/manifest.webmanifest && cp makers-mark.png www/makers-mark.png && cp apple-touch-icon.png www/apple-touch-icon.png && cp apple-touch-icon-precomposed.png www/apple-touch-icon-precomposed.png && cp favicon.png www/favicon.png",
+    "copy-www": "mkdir -p www && cp index.html www/index.html && cp cards.json www/cards.json && cp privacy.html www/privacy.html && cp sw.js www/sw.js && cp manifest.webmanifest www/manifest.webmanifest && cp makers-mark.png www/makers-mark.png && cp apple-touch-icon.png www/apple-touch-icon.png && cp apple-touch-icon-precomposed.png www/apple-touch-icon-precomposed.png && cp favicon.png www/favicon.png",
     "build": "npm run copy-www && npx cap copy android",
     "build-ios": "npm run copy-www && npx cap copy ios",
     "open": "npx cap open android",
