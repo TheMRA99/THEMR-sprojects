@@ -891,7 +891,7 @@
       <div class="relative mb-4">
         <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2" style="color:var(--text3)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         <input v-model="cardSearch" type="text" placeholder="Search cards..." class="w-full pl-12 pr-10 py-3.5 rounded-2xl border transition-colors" :style="{background:'var(--bg3)',borderColor:'var(--surface-border)',color:'var(--text)'}">
-        <button v-if="cardSearch" @click="cardSearch=''" class="absolute right-4 top-1/2 -translate-y-1/2" style="color:var(--text3)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        <button v-if="cardSearch" @click="cardSearch=''" aria-label="Clear search" class="absolute right-4 top-1/2 -translate-y-1/2" style="color:var(--text3)"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
       <div class="flex gap-2 mb-4 overflow-x-auto scroll-hide pb-1 -mx-4 px-4">
         <button @click="bankFilter=''" class="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0 transition-all" :class="bankFilter===''?'btn-accent':''" :style="bankFilter!==''?{background:'var(--accent-bg)',color:'var(--text2)'}:{}">All</button>
@@ -944,7 +944,7 @@
         <div class="relative flex-1 store-search-wrap float-label">
           <svg class="w-[18px] h-[18px] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" style="color:var(--text3)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           <input v-model="storeSearch" @input="onStoreInput" @focus="showDrop=true" type="text" placeholder="Where are you paying?" class="w-full pl-10 pr-9 py-3 rounded-2xl border text-sm transition-colors" :style="{background:'var(--bg3)',borderColor:'var(--surface-border)',color:'var(--text)'}">
-          <button v-if="storeSearch" @click="storeSearch='';storeSuggestions=[];showDrop=false" class="absolute right-3 top-1/2 -translate-y-1/2" style="color:var(--text3)"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+          <button v-if="storeSearch" @click="storeSearch='';storeSuggestions=[];showDrop=false" aria-label="Clear search" class="absolute right-3 top-1/2 -translate-y-1/2" style="color:var(--text3)"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
           <div v-if="showDrop&&storeSuggestions.length>0" class="absolute left-0 right-0 top-full mt-1 rounded-2xl border shadow-2xl z-40 max-h-64 overflow-y-auto scroll-hide" :style="{background:'var(--surface)',borderColor:'var(--surface-border)'}">
             <button v-for="s in storeSuggestions" :key="s.name+(s.source||'')" @click="pickStore(s)" class="w-full text-left px-4 py-3 flex items-center gap-3 border-b last:border-0 transition-colors" :style="{borderColor:'var(--surface-border)'}" onmouseover="this.style.background='var(--surface-hover)'" onmouseout="this.style.background='transparent'">
               <span class="text-lg">{{catIcon(s.category)}}</span>
@@ -955,7 +955,7 @@
             </button>
           </div>
         </div>
-        <button v-if="geoSupported" @click="useMyLocation" :disabled="geoLoading" class="w-12 h-12 rounded-2xl border flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-40" :style="{borderColor:'var(--surface-border)',background:'var(--surface)'}">
+        <button v-if="geoSupported" @click="useMyLocation" :disabled="geoLoading" aria-label="Use my location" class="w-12 h-12 rounded-2xl border flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-40" :style="{borderColor:'var(--surface-border)',background:'var(--surface)'}">
           <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         </button>
       </div>
@@ -1072,7 +1072,10 @@
       <div v-if="userCards.length>0" class="sr mb-3 p-4 rounded-2xl surface-premium">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2"><div class="w-1 h-4 rounded-full" style="background:linear-gradient(180deg,var(--accent2),var(--accent))"></div><p class="text-[10px] font-display font-bold tracking-tighter uppercase dual-gradient-text">Live FX &middot; 1 SGD</p></div>
-          <span class="text-[9px] flex items-center gap-1" style="color:var(--text3)"><span class="w-1.5 h-1.5 rounded-full" style="background:#10b981;animation:neonPulse 2s ease-in-out infinite"></span>{{liveCurrencyUpdated||'loading'}}</span>
+          <button @click="fetchLiveRates()" class="text-[9px] flex items-center gap-1" :style="{color:liveCurrencyUpdated==='cached'?'#f59e0b':'var(--text3)'}">
+            <span v-if="liveCurrencyUpdated==='cached'">⟳ Tap to retry</span>
+            <template v-else><span class="w-1.5 h-1.5 rounded-full" style="background:#10b981;animation:neonPulse 2s ease-in-out infinite"></span>{{liveCurrencyUpdated?'updated '+liveCurrencyUpdated:'loading…'}}</template>
+          </button>
         </div>
         <div class="grid grid-cols-3 gap-2">
           <div v-for="c in liveCurrencies" :key="c.code" class="p-2 rounded-xl" :style="{background:'var(--bg3)'}">
@@ -1200,6 +1203,19 @@
                 <div v-if="spendAmount>0" class="mt-1.5 pt-1.5 flex items-center justify-between" :style="{borderTop:'1px dashed var(--surface-border)'}">
                   <span class="text-[11px]" style="color:var(--text3)">{{rec.card.type==='Miles'?'Miles':'Reward'}}</span>
                   <span class="text-xs font-display font-bold" :style="{color:rec.card.type==='Cashback'?'#10b981':rec.card.type==='Miles'?'#3b82f6':'var(--accent)'}">{{rec.card.type==='Miles'?'~'+Math.round((rec.rate/100)*spendAmount/0.018).toLocaleString()+' mi':'S$'+((rec.rate/100)*spendAmount).toFixed(2)}}</span>
+                </div>
+                <!-- Why this card? — compact, ranks 2+ -->
+                <button @click.stop="toggleExpanded(rec.card.id)" class="mt-1.5 flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider" style="color:var(--accent)">
+                  <span>Why this card?</span>
+                  <svg class="w-3 h-3 transition-transform" :class="{'rotate-180':expandedRec===rec.card.id}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div v-if="expandedRec===rec.card.id" class="mt-1.5 p-2.5 rounded-lg reveal-expand" :style="{background:'var(--bg3)'}">
+                  <p class="text-[11px] leading-relaxed" style="color:var(--text2)">
+                    <span v-if="rec.card.minSpend&&!rec.meetsMinSpend">Needs <strong>S${{rec.card.minSpend}}/mo</strong> min spend{{spendAmount>0?' — you\'re S$'+(rec.card.minSpend-spendAmount)+' short':''}}, so bonus rates aren't unlocked. That's why it ranks below #1.</span>
+                    <span v-else-if="rec.capped">Caps at <strong>S${{rec.card.caps[selectedCategory]}}/mo</strong> cashback{{rec.effectiveRate<rec.rate?' — effective rate drops to '+fmtRate(rec.effectiveRate)+' across your spend':''}}. The #1 card edges it out on uncapped value.</span>
+                    <span v-else-if="rec.annualFee>0">Solid <strong>{{fmtRate(rec.rate)}}</strong>, but the <strong>S${{rec.annualFee}}</strong> annual fee drags net value below #1.</span>
+                    <span v-else>Earns <strong>{{fmtRate(rec.rate)}}</strong> on {{catLabel(selectedCategory).toLowerCase()}} — just shaded by the #1 pick's higher rate or cleaner terms.</span>
+                  </p>
                 </div>
               </div>
             </div></div>
@@ -1403,7 +1419,7 @@
             <option value="">Select card {{ci+1}}</option>
             <option v-for="c in userCardObjects" :key="c.id" :value="c.id">{{c.bank}} {{c.name}}</option>
           </select>
-          <button v-if="ci>=2" @click="compareCards.splice(ci,1)" class="w-8 h-8 rounded-full flex items-center justify-center" style="color:var(--text3)"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+          <button v-if="ci>=2" @click="compareCards.splice(ci,1)" aria-label="Remove card slot" class="w-8 h-8 rounded-full flex items-center justify-center" style="color:var(--text3)"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
         </div>
         <button v-if="compareCards.length<4" @click="compareCards.push('')" class="text-xs font-bold text-accent flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>Add card</button>
       </div>
@@ -1522,7 +1538,7 @@
         <div class="flex gap-2 overflow-x-auto scroll-hide pb-1">
           <div v-for="g in savedBillGroups" :key="g.name" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full border flex-shrink-0" :style="{borderColor:'var(--surface-border)',background:'var(--surface)'}">
             <button @click="loadBillGroup(g)" class="text-xs font-semibold" :style="{color:'var(--text2)'}">&#x1F465; {{g.name}} &middot; {{g.members.length}}</button>
-            <button @click="deleteBillGroup(g)" style="color:var(--text4)"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            <button @click="deleteBillGroup(g)" aria-label="Delete group" style="color:var(--text4)"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
           </div>
         </div>
       </div>
@@ -1543,7 +1559,7 @@
             <input v-if="billSplitType==='amount'" v-model.number="billMembers[mi].customAmt" type="number" min="0" placeholder="0" class="w-16 px-2 py-1 rounded-lg border text-xs text-center" :style="{background:'var(--surface)',borderColor:'var(--surface-border)',color:'var(--text)'}">
             <input v-if="billSplitType==='percent'" v-model.number="billMembers[mi].customPct" type="number" min="0" max="100" placeholder="0" class="w-14 px-2 py-1 rounded-lg border text-xs text-center" :style="{background:'var(--surface)',borderColor:'var(--surface-border)',color:'var(--text)'}">
             <span class="text-xs font-display font-bold w-16 text-right flex-shrink-0" :style="{color:'var(--text2)'}">{{billCurrency==='SGD'?'S$':billCurrency}}{{memberShare(mi).toFixed(2)}}</span>
-            <button v-if="billMembers.length>2" @click="billMembers.splice(mi,1)" class="flex-shrink-0" style="color:var(--text4)"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            <button v-if="billMembers.length>2" @click="billMembers.splice(mi,1)" aria-label="Remove person" class="flex-shrink-0" style="color:var(--text4)"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
           </div>
         </div>
       </div>
@@ -1574,6 +1590,18 @@
           </div>
         </div>
       </div>
+      <!-- Save bill group modal -->
+      <div v-if="showGroupModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop" style="background:rgba(0,0,0,0.6)" @click.self="showGroupModal=false">
+        <div class="rounded-2xl p-6 w-full max-w-sm border modal-content" :style="{background:'var(--surface)',borderColor:'var(--surface-border)'}">
+          <h3 class="font-display text-lg font-bold mb-1" :style="{color:'var(--text)'}">Name this group</h3>
+          <p class="text-sm mb-4" style="color:var(--text3)">e.g. "Roomies", "Sunday brunch crew"</p>
+          <input v-model="groupNameInput" @keyup.enter="confirmSaveBillGroup()" type="text" maxlength="30" placeholder="Group name" autofocus class="w-full px-3 py-2.5 rounded-xl border text-sm mb-4 transition-colors" :style="{background:'var(--bg3)',borderColor:'var(--surface-border)',color:'var(--text)'}">
+          <div class="flex gap-2">
+            <button @click="showGroupModal=false" class="flex-1 py-2.5 rounded-xl text-sm font-medium transition-colors" :style="{background:'var(--bg3)',color:'var(--text2)'}">Cancel</button>
+            <button @click="confirmSaveBillGroup()" class="flex-1 py-2.5 rounded-xl text-sm font-bold text-white" style="background:linear-gradient(90deg,var(--accent),var(--accent2))">Save</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- PROFILE -->
@@ -1592,7 +1620,7 @@
           <label class="text-[10px] font-bold uppercase tracking-widest" style="color:var(--text3)">Appearance</label>
           <div class="mt-3 flex items-center justify-between">
             <span class="text-sm" style="color:var(--text2)">Dark mode</span>
-            <div class="theme-toggle" :style="{background:isDark?'var(--accent-bg)':'var(--accent-bg)'}" @click="toggleTheme">
+            <div class="theme-toggle" role="button" tabindex="0" :aria-label="isDark?'Switch to light mode':'Switch to dark mode'" @keyup.enter="toggleTheme" :style="{background:isDark?'var(--accent-bg)':'var(--accent-bg)'}" @click="toggleTheme">
               <div class="knob flex items-center justify-center" :style="{transform:isDark?'translateX(24px)':'translateX(3px)',background:'var(--accent)'}">
                 <svg v-if="!isDark" class="w-3.5 h-3.5" style="color:#fff" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
                 <svg v-else class="w-3.5 h-3.5" :style="{color:'var(--accent-text)'}" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
@@ -1641,7 +1669,10 @@
   </nav>
 
   <div v-if="toast.show" class="fixed top-20 left-1/2 -translate-x-1/2 z-[60] pop-in">
-    <div class="px-5 py-3 rounded-2xl shadow-lg text-sm font-bold btn-accent">{{toast.message}}</div>
+    <div class="px-5 py-3 rounded-2xl shadow-lg text-sm font-bold btn-accent flex items-center gap-3">
+      <span>{{toast.message}}</span>
+      <button v-if="toast.action==='undo'" @click="undoDelete()" class="px-2.5 py-1 rounded-lg text-xs font-black uppercase tracking-wider" style="background:rgba(255,255,255,0.25)">Undo</button>
+    </div>
   </div>
 </div>
 
@@ -1894,15 +1925,23 @@ V.createApp({
     try{var bmSaved=localStorage.getItem('cw_bill_members');if(bmSaved){var parsed=JSON.parse(bmSaved);if(Array.isArray(parsed)&&parsed.length>=2)_bmInit=parsed;}}catch(e){}
     var billMembers=V.ref(_bmInit);
     V.watch(billMembers,function(v){try{localStorage.setItem('cw_bill_members',JSON.stringify(v));}catch(e){}},{deep:true});
+    /* Bill-group naming modal (replaces native prompt — broken in Capacitor WebView) */
+    var showGroupModal=V.ref(false),groupNameInput=V.ref('');
     function saveBillGroup(){
       var named=billMembers.value.filter(function(m){return(m.name||'').trim();});
-      if(named.length<2)return;
-      var name=prompt('Name this group? (e.g. "Roomies", "Sunday brunch crew")');
-      if(!name)return;
+      if(named.length<2){showMsg('Add at least 2 named people first');return;}
+      groupNameInput.value='';
+      showGroupModal.value=true;
+    }
+    function confirmSaveBillGroup(){
+      var name=(groupNameInput.value||'').trim();
+      if(!name){showMsg('Enter a group name');return;}
       savedBillGroups.value=savedBillGroups.value.filter(function(g){return g.name!==name;});
       savedBillGroups.value.push({name:name,members:JSON.parse(JSON.stringify(billMembers.value))});
       try{localStorage.setItem('cw_bill_groups',JSON.stringify(savedBillGroups.value));}catch(e){}
+      showGroupModal.value=false;
       triggerHaptic('medium');
+      showMsg('Group "'+name+'" saved');
     }
     function loadBillGroup(g){
       billMembers.value=JSON.parse(JSON.stringify(g.members));
@@ -2036,6 +2075,9 @@ V.createApp({
     function computeQuizResult(){
       var a=quizAnswers.value;
       var pool=allCards.value.filter(function(c){return!c.isCustom;});
+      // skip cards already in the user's wallet — no point recommending what they own
+      var unowned=pool.filter(function(c){return userCards.value.indexOf(c.id)<0;});
+      if(unowned.length>0)pool=unowned;
       // filter by bank if preference given
       if(a.bank&&a.bank!=='any'){var b=pool.filter(function(c){return c.bank===a.bank;});if(b.length>0)pool=b;}
       // filter by reward type
@@ -2258,12 +2300,37 @@ V.createApp({
       var doOverpass=function(){placesSearching.value=true;showDrop.value=true;var query='[out:json][timeout:20];(node["amenity"~"restaurant|cafe|fast_food|bar|pub|cinema|fuel|pharmacy|bank"](around:1500,'+lat+','+lon+');node["shop"~"supermarket|convenience|mall|department_store|clothes|electronics|mobile_phone|beauty|jewelry|optician"](around:1500,'+lat+','+lon+');way["amenity"~"restaurant|cafe|fast_food|fuel|cinema"](around:1500,'+lat+','+lon+');way["shop"~"supermarket|mall|department_store|electronics"](around:1500,'+lat+','+lon+');node["tourism"~"hotel|hostel|guest_house"](around:1500,'+lat+','+lon+');node["leisure"~"fitness_centre|sports_centre"](around:1500,'+lat+','+lon+'););out body 30;';fetch('https://overpass-api.de/api/interpreter',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'data='+encodeURIComponent(query)}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(function(d){var results=(d.elements||[]).map(function(el){var tags=el.tags||{};var name=tags.name||tags['name:en']||'';if(!name)return null;var cat='general';if(tags.amenity==='restaurant'||tags.amenity==='cafe'||tags.amenity==='fast_food'||tags.amenity==='bar'||tags.amenity==='pub')cat='dining';else if(tags.shop==='supermarket'||tags.shop==='convenience')cat='groceries';else if(tags.amenity==='fuel')cat='petrol';else if(tags.amenity==='cinema'||tags.leisure==='fitness_centre')cat='entertainment';else if(tags.tourism==='hotel'||tags.tourism==='hostel'||tags.tourism==='guest_house')cat='travel';else if(tags.shop==='mobile_phone')cat='telco';else if(tags.shop==='electronics')cat='online';else if(tags.shop==='beauty'||tags.shop==='jewelry')cat='general';return{name:name,category:cat,source:'osm'};}).filter(function(x){return x!==null;});if(results.length>0){storeSuggestions.value=results.slice(0,15);showMsg('Found '+results.length+' places nearby');}else{showMsg('No places found within 1.5km. Try searching instead.');}}).catch(function(err){console.error('Overpass error:',err);showMsg('Location search failed. Try typing a store name.');}).finally(function(){placesSearching.value=false;});};
       if(key&&key.length>=10){placesSearching.value=true;showDrop.value=true;fetch('https://places.googleapis.com/v1/places:searchNearby',{method:'POST',headers:{'Content-Type':'application/json','X-Goog-Api-Key':key,'X-Goog-FieldMask':'places.displayName,places.types,places.formattedAddress'},body:JSON.stringify({locationRestriction:{circle:{center:{latitude:lat,longitude:lon},radius:1500}},maxResultCount:10})}).then(function(r){if(!r.ok)throw new Error('Google API error');return r.json();}).then(function(d){var places=(d.places||[]);if(places.length===0)throw new Error('No results');storeSuggestions.value=places.map(function(p){var cat='general';var types=p.types||[];for(var t=0;t<types.length;t++){if(PTYPE[types[t]]){cat=PTYPE[types[t]];break;}}return{name:(p.displayName&&p.displayName.text)||'Unknown',category:cat,source:'google'};});showMsg('Found '+places.length+' places nearby');}).catch(function(err){console.warn('Google Places failed, falling back to Overpass:',err);doOverpass();}).finally(function(){placesSearching.value=false;});}else{doOverpass();}
     },function(err){geoLoading.value=false;if(err.code===1)showMsg('Location access denied. Check browser permissions.');else if(err.code===2)showMsg('Location unavailable. Tap location button to retry.');else showMsg('Location timed out. Tap location button to retry.');},{enableHighAccuracy:true,timeout:15000});}
-    function showMsg(msg,type){toast.value={show:true,message:msg,type:type||'success'};setTimeout(function(){toast.value.show=false;},4000);}
+    var _toastTimer=null;
+    function showMsg(msg,type,action){
+      if(_toastTimer)clearTimeout(_toastTimer);
+      toast.value={show:true,message:msg,type:type||'success',action:action||null};
+      _toastTimer=setTimeout(function(){toast.value.show=false;},action?6000:4000);
+    }
+    /* Undo-able card deletion */
+    var _lastDeleted=null;
+    function undoDelete(){
+      if(!_lastDeleted)return;
+      customCards.value=customCards.value.concat([_lastDeleted.card]);
+      if(_lastDeleted.wasOwned)userCards.value=userCards.value.concat([_lastDeleted.card.id]);
+      save();
+      _lastDeleted=null;
+      toast.value.show=false;
+      showMsg('Card restored');
+    }
     function exportData(){var d={cards:userCards.value,profile:profile.value,customCards:customCards.value};var b=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='verso-backup.json';a.click();showMsg('Exported!');}
     function importData(evt){var file=evt.target.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(e){try{var d=JSON.parse(e.target.result);if(d.cards&&Array.isArray(d.cards))userCards.value=d.cards;if(d.customCards&&Array.isArray(d.customCards)){d.customCards.forEach(function(cc){if(cc.rates){for(var k in cc.rates){var v=parseFloat(cc.rates[k]);cc.rates[k]=(isNaN(v)||v<0||v>100)?0:v;}}});customCards.value=d.customCards;}if(d.profile){profile.value.name=d.profile.name||profile.value.name;profile.value.googleApiKey=d.profile.googleApiKey||'';}save();showMsg('Imported!');}catch(err){showMsg('Invalid file','error');}};reader.readAsText(file);evt.target.value='';}
     function startAddCard(fromPage){addCardReturnPage.value=fromPage||page.value;editingCardId.value=null;newCard.value=getEmptyCard();go('add-card');}
     function saveCustomCard(){var c=JSON.parse(JSON.stringify(newCard.value));if(!c.bank.trim()||!c.name.trim())return;if(editingCardId.value){var idx=customCards.value.findIndex(function(x){return x.id===editingCardId.value;});if(idx>=0){c.id=editingCardId.value;customCards.value.splice(idx,1,c);}}else{c.id='custom-'+Date.now();customCards.value.push(c);userCards.value.push(c.id);}save();showMsg(editingCardId.value?'Card updated!':'Card added to wallet!');go(addCardReturnPage.value);}
-    function deleteCustomCard(id){customCards.value=customCards.value.filter(function(c){return c.id!==id;});userCards.value=userCards.value.filter(function(cid){return cid!==id;});save();showMsg('Card deleted');go(addCardReturnPage.value);}
+    function deleteCustomCard(id){
+      var card=customCards.value.find(function(c){return c.id===id;});
+      var wasOwned=userCards.value.indexOf(id)>=0;
+      _lastDeleted=card?{card:card,wasOwned:wasOwned}:null;
+      customCards.value=customCards.value.filter(function(c){return c.id!==id;});
+      userCards.value=userCards.value.filter(function(cid){return cid!==id;});
+      save();
+      showMsg('Card deleted',null,_lastDeleted?'undo':null);
+      go(addCardReturnPage.value);
+    }
     function editCustomCard(card){addCardReturnPage.value=page.value;editingCardId.value=card.id;newCard.value=JSON.parse(JSON.stringify(card));selectedCardDetail.value=null;go('add-card');}
     function searchCardOnline(){var q=encodeURIComponent(newCard.value.bank+' '+newCard.value.name+' credit card Singapore rewards cashback rates');window.open('https://www.google.com/search?q='+q,'_blank');}
     function deleteAll(){localStorage.removeItem('cw_cards');localStorage.removeItem('cw_profile');localStorage.removeItem('cw_theme');localStorage.removeItem('cw_recent');localStorage.removeItem('cw_custom_cards');userCards.value=[];profile.value={name:'',googleApiKey:''};recentSearches.value=[];customCards.value=[];showDeleteConfirm.value=false;page.value='onboarding';}
@@ -2315,8 +2382,8 @@ V.createApp({
     quizStep:quizStep,quizDone:quizDone,quizQuestions:quizQuestions,quizResult:quizResult,answerQuiz:answerQuiz,resetQuiz:resetQuiz,triggerHaptic:triggerHaptic,rotationReminder:rotationReminder,
     optBudget:optBudget,optTotalSpend:optTotalSpend,optAllocations:optAllocations,optMonthlySavings:optMonthlySavings,optYearlySavings:optYearlySavings,applyPreset:applyPreset,
     compareCards:compareCards,compCards:compCards,compBarWidth:compBarWidth,compBestForCat:compBestForCat,compWinsFor:compWinsFor,compWinner:compWinner,userCardObjects:userCardObjects,
-    billAmount:billAmount,billCategory:billCategory,billPeople:billPeople,billAllCards:billAllCards,billBestCard:billBestCard,billBestRate:billBestRate,billCurrency:billCurrency,billExRate:billExRate,billSplitType:billSplitType,billMembers:billMembers,currencies:currencies,addBillMember:addBillMember,memberShare:memberShare,billAmountSGD:billAmountSGD,fetchExRate:fetchExRate,savedBillGroups:savedBillGroups,saveBillGroup:saveBillGroup,loadBillGroup:loadBillGroup,deleteBillGroup:deleteBillGroup,
-    flippingCard:flippingCard,go:go,toggleCard:toggleCard,isSelected:isSelected,getCard:getCard,catIcon:catIcon,catLabel:catLabel,fmtRate:fmtRate,estSavings:estSavings,save:save,toggleTheme:toggleTheme,finishSetup:finishSetup,pickCategory:pickCategory,pickStore:pickStore,onStoreInput:onStoreInput,useMyLocation:useMyLocation,showMsg:showMsg,exportData:exportData,importData:importData,deleteAll:deleteAll,startAddCard:startAddCard,saveCustomCard:saveCustomCard,deleteCustomCard:deleteCustomCard,editCustomCard:editCustomCard,searchCardOnline:searchCardOnline,fireConfetti:fireConfetti};
+    billAmount:billAmount,billCategory:billCategory,billPeople:billPeople,billAllCards:billAllCards,billBestCard:billBestCard,billBestRate:billBestRate,billCurrency:billCurrency,billExRate:billExRate,billSplitType:billSplitType,billMembers:billMembers,currencies:currencies,addBillMember:addBillMember,memberShare:memberShare,billAmountSGD:billAmountSGD,fetchExRate:fetchExRate,savedBillGroups:savedBillGroups,saveBillGroup:saveBillGroup,loadBillGroup:loadBillGroup,deleteBillGroup:deleteBillGroup,showGroupModal:showGroupModal,groupNameInput:groupNameInput,confirmSaveBillGroup:confirmSaveBillGroup,
+    flippingCard:flippingCard,go:go,toggleCard:toggleCard,isSelected:isSelected,getCard:getCard,catIcon:catIcon,catLabel:catLabel,fmtRate:fmtRate,estSavings:estSavings,save:save,toggleTheme:toggleTheme,finishSetup:finishSetup,pickCategory:pickCategory,pickStore:pickStore,onStoreInput:onStoreInput,useMyLocation:useMyLocation,showMsg:showMsg,exportData:exportData,importData:importData,deleteAll:deleteAll,startAddCard:startAddCard,saveCustomCard:saveCustomCard,deleteCustomCard:deleteCustomCard,undoDelete:undoDelete,editCustomCard:editCustomCard,searchCardOnline:searchCardOnline,fireConfetti:fireConfetti};
   }
 }).mount('#app');
 </script>
