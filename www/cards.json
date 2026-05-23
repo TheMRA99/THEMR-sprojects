@@ -1,7 +1,7 @@
 {
-  "dataVersion": 1,
+  "dataVersion": 2,
   "updated": "2026-05-18",
-  "note": "VERSO Singapore card database. Edit this file to update card terms — the app fetches it on launch.",
+  "note": "VERSO Singapore card database. Edit this file to update card terms — the app fetches it on launch. v2: bulk audit fixes from 2026-05-18 (rates, fees, caps, min spend across 33 major cards).",
   "signupBonuses": {
     "dbs-live-fresh": {
       "amt": 150,
@@ -182,13 +182,13 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "5% contactless/online",
+      "highlight": "6% on shopping & transport",
       "color": "linear-gradient(135deg,#1a1a1a,#333333)",
       "rates": {
         "dining": 5,
         "groceries": 5,
-        "online": 5,
-        "transport": 5,
+        "online": 6,
+        "transport": 6,
         "contactless": 5,
         "petrol": 0.3,
         "travel": 0.3,
@@ -199,7 +199,8 @@
       },
       "notes": {
         "dining": "5% cashback on contactless",
-        "online": "5% on online spend"
+        "online": "6% online shopping (cap $50/mo)",
+        "transport": "6% transport (cap $20/mo)"
       },
       "conditions": {
         "dining": "Cap $20/cat/mo. Min $600/mo."
@@ -207,13 +208,13 @@
       "caps": {
         "dining": 20,
         "groceries": 20,
-        "online": 20,
+        "online": 50,
         "transport": 20,
         "contactless": 20,
         "entertainment": 20
       },
-      "minSpend": 600,
-      "fee": "$194.40"
+      "minSpend": 800,
+      "fee": "$196.20"
     },
     {
       "id": "dbs-altitude",
@@ -222,7 +223,7 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "3 mpd travel",
+      "highlight": "3 mpd via DBS Travel Portal, 2.2 mpd overseas",
       "color": "linear-gradient(135deg,#1a2744,#2c4a7c)",
       "rates": {
         "dining": 2.2,
@@ -235,17 +236,18 @@
         "entertainment": 0.7,
         "telco": 0.7,
         "utilities": 0.7,
-        "general": 0.7
+        "general": 2.34
       },
       "notes": {
-        "travel": "3 mpd on online travel (~5.4%)"
+        "travel": "3 mpd on online travel (~5.4%)",
+        "general": "2.2 mpd overseas, 1.3 mpd local. Fee waiver ENDS 1 Aug 2026."
       },
       "conditions": {
         "travel": "Online travel portals only."
       },
       "caps": {},
       "minSpend": 0,
-      "fee": "$192.60"
+      "fee": "$196.20"
     },
     {
       "id": "dbs-womans-world",
@@ -270,13 +272,13 @@
         "general": 0.7
       },
       "notes": {
-        "online": "4 mpd = ~7.2% on online"
+        "online": "4 mpd online — capped S$1,000 spend/mo (~$72 in miles)"
       },
       "conditions": {
         "online": "Cap 10X on $2,000/mo."
       },
       "caps": {
-        "online": 144
+        "online": 72
       },
       "minSpend": 0,
       "fee": "$194.40"
@@ -426,31 +428,32 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "6 mpd overseas dining",
+      "highlight": "1.5 mpd local, 2.2 mpd overseas — fee waiver ENDS 1 Aug 2026",
       "color": "linear-gradient(135deg,#0a0a14,#1a1a2e)",
       "rates": {
-        "dining": 3.6,
+        "dining": 2.7,
         "groceries": 2.2,
         "online": 2.2,
         "transport": 2.2,
         "contactless": 2.2,
         "petrol": 2.2,
-        "travel": 10.8,
+        "travel": 4,
         "entertainment": 2.2,
         "telco": 2.2,
         "utilities": 2.2,
-        "general": 2.2
+        "general": 2.7
       },
       "notes": {
         "travel": "6 mpd overseas dining (~10.8%)",
-        "dining": "2 mpd local dining (~3.6%)"
+        "dining": "2 mpd local dining (~3.6%)",
+        "general": "2.2 mpd overseas, 1.5 mpd local. No 6 mpd dining anymore."
       },
       "conditions": {
         "travel": "Visa Infinite. $650 annual fee."
       },
       "caps": {},
       "minSpend": 0,
-      "fee": "$650"
+      "fee": "$599.50"
     },
     {
       "id": "dbs-takashimaya",
@@ -493,34 +496,40 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "5% on 6 categories",
+      "highlight": "10% online food delivery, 20% SPC petrol",
       "color": "linear-gradient(135deg,#0047ab,#2563eb)",
       "rates": {
         "dining": 5,
         "groceries": 5,
-        "online": 5,
+        "online": 10,
         "transport": 5,
         "contactless": 5,
-        "petrol": 0.3,
+        "petrol": 20.1,
         "travel": 0.3,
         "entertainment": 5,
-        "telco": 5,
-        "utilities": 0.3,
+        "telco": 3,
+        "utilities": 2.5,
         "general": 0.3
       },
       "notes": {
-        "dining": "5% on dining, grocery, transport, online, telco"
+        "dining": "5% dining incl. Lazada/Shopee",
+        "online": "10% SimplyGo + online food delivery",
+        "groceries": "5% at Sheng Siong & Redmart (cap $20/mo each)",
+        "telco": "3% telco (min $800)",
+        "petrol": "20.1% at SPC stations"
       },
       "conditions": {
         "dining": "Min $800/mo. Cap $20/cat."
       },
       "caps": {
-        "dining": 20,
+        "dining": 30,
         "groceries": 20,
-        "online": 20,
+        "online": 30,
         "transport": 20,
-        "telco": 20,
-        "entertainment": 20
+        "telco": 30,
+        "entertainment": 20,
+        "utilities": 30,
+        "petrol": 30
       },
       "minSpend": 800,
       "fee": "$0"
@@ -532,35 +541,37 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "10% dining/Grab",
+      "highlight": "Up to 10% — tiered quarterly cashback",
       "color": "linear-gradient(135deg,#003d82,#0052ae)",
       "rates": {
         "dining": 10,
-        "groceries": 5,
-        "online": 5,
+        "groceries": 8,
+        "online": 10,
         "transport": 10,
         "contactless": 5,
         "petrol": 5,
         "travel": 3.33,
         "entertainment": 3.33,
         "telco": 3.33,
-        "utilities": 3.33,
+        "utilities": 4.33,
         "general": 3.33
       },
       "notes": {
         "dining": "Up to 10% on dining",
-        "transport": "Up to 10% on Grab"
+        "transport": "Up to 10% on Grab",
+        "general": "Tiered min spend S$600/$1,000/$2,000 + 10 txns/mo. Quarterly caps S$60/$100/$200."
       },
       "conditions": {
         "dining": "5 txns + $500/mo + salary credit. Cap $50/cat."
       },
       "caps": {
-        "dining": 50,
-        "groceries": 50,
-        "online": 50,
-        "transport": 50
+        "dining": 60,
+        "groceries": 60,
+        "online": 60,
+        "transport": 60,
+        "utilities": 60
       },
-      "minSpend": 500,
+      "minSpend": 600,
       "fee": "$0 (waived w/ salary)"
     },
     {
@@ -570,7 +581,7 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "1.4 mpd all local",
+      "highlight": "2.4 mpd FCY, 3 mpd IDR/MYR/THB/VND, 8 mpd Agoda",
       "color": "linear-gradient(135deg,#1a3a5c,#2d5a8c)",
       "rates": {
         "dining": 2.5,
@@ -579,22 +590,22 @@
         "transport": 2.5,
         "contactless": 2.5,
         "petrol": 2.5,
-        "travel": 10.8,
+        "travel": 4.3,
         "entertainment": 2.5,
         "telco": 2.5,
         "utilities": 2.5,
         "general": 2.5
       },
       "notes": {
-        "general": "1.4 mpd on all local",
-        "travel": "6 mpd UOB Travel (~10.8%)"
+        "general": "1.4 mpd local base",
+        "travel": "2.4 mpd foreign currency, up to 8 mpd via Agoda"
       },
       "conditions": {
         "travel": "UOB Travel portal only."
       },
       "caps": {},
       "minSpend": 0,
-      "fee": "$256.80"
+      "fee": "$261.60"
     },
     {
       "id": "uob-ladys",
@@ -603,30 +614,35 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "4 mpd dining/beauty",
+      "highlight": "Up to 10 mpd on your chosen category",
       "color": "linear-gradient(135deg,#c2185b,#e91e63)",
       "rates": {
-        "dining": 7.2,
-        "groceries": 7.2,
-        "online": 1.6,
-        "transport": 1.6,
+        "dining": 18,
+        "groceries": 18,
+        "online": 18,
+        "transport": 18,
         "contactless": 1.6,
         "petrol": 1.6,
-        "travel": 1.6,
-        "entertainment": 7.2,
+        "travel": 18,
+        "entertainment": 18,
         "telco": 1.6,
         "utilities": 1.6,
-        "general": 1.6
+        "general": 0.7
       },
       "notes": {
-        "dining": "4 mpd dining, beauty (~7.2%)"
+        "dining": "4 mpd dining, beauty (~7.2%)",
+        "general": "Pick 1 preferred category (Dining, Fashion, Beauty, Travel, Transport, etc.) for 10 mpd on first S$1,000/mo"
       },
       "conditions": {
         "dining": "Cap 10X on $1,000/mo."
       },
       "caps": {
-        "dining": 72,
-        "groceries": 72
+        "dining": 180,
+        "groceries": 180,
+        "online": 180,
+        "travel": 180,
+        "entertainment": 180,
+        "transport": 180
       },
       "minSpend": 0,
       "fee": "$194.40"
@@ -654,12 +670,12 @@
         "general": 1.7
       },
       "notes": {
-        "general": "1.7% unlimited. No cap. No min."
+        "general": "1.7% unlimited cashback. Fee S$196.20 (waived first year). 0.3% on excluded categories (utilities, charity, etc.)"
       },
       "conditions": {},
       "caps": {},
       "minSpend": 0,
-      "fee": "$0"
+      "fee": "$196.20"
     },
     {
       "id": "uob-evol",
@@ -668,23 +684,26 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "8% mobile contactless",
+      "highlight": "10% online + mobile contactless + streaming/telco/gym",
       "color": "linear-gradient(135deg,#00b4d8,#0096c7)",
       "rates": {
-        "dining": 8,
-        "groceries": 8,
-        "online": 3,
+        "dining": 0.3,
+        "groceries": 0.3,
+        "online": 10,
         "transport": 8,
-        "contactless": 8,
+        "contactless": 10,
         "petrol": 3,
         "travel": 3,
         "entertainment": 8,
-        "telco": 3,
+        "telco": 10,
         "utilities": 3,
         "general": 0.3
       },
       "notes": {
-        "contactless": "8% on mobile contactless"
+        "contactless": "10% mobile contactless (Apple/Google/Samsung Pay)",
+        "online": "10% local online",
+        "telco": "10% selected streaming/telco/gym",
+        "general": "0% FX + 1% overseas till Dec 2026"
       },
       "conditions": {
         "contactless": "Mobile tap only. Cap $20/mo. Min $600/mo."
@@ -693,10 +712,12 @@
         "dining": 20,
         "groceries": 20,
         "transport": 20,
-        "contactless": 20,
-        "entertainment": 20
+        "contactless": 30,
+        "entertainment": 20,
+        "online": 30,
+        "telco": 20
       },
-      "minSpend": 600,
+      "minSpend": 800,
       "fee": "$0"
     },
     {
@@ -706,24 +727,25 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "2 KF mpd",
+      "highlight": "3 KF mpd SIA/Scoot/KrisShop, 2.4 mpd dining/online/transport",
       "color": "linear-gradient(135deg,#003d6b,#0066b3)",
       "rates": {
-        "dining": 3.6,
+        "dining": 4.3,
         "groceries": 1.6,
-        "online": 1.6,
-        "transport": 1.6,
+        "online": 4.3,
+        "transport": 4.3,
         "contactless": 1.6,
         "petrol": 1.6,
-        "travel": 3.6,
+        "travel": 5.4,
         "entertainment": 1.6,
         "telco": 1.6,
         "utilities": 1.6,
-        "general": 1.6
+        "general": 2.2
       },
       "notes": {
-        "dining": "2 KF mpd dining (~3.6%)",
-        "travel": "2 KF mpd travel (~3.6%)"
+        "dining": "2.4 KF mpd (was 3 mpd at launch)",
+        "travel": "3 KF mpd on SIA/Scoot/KrisShop/Kris+/Pelago",
+        "general": "1.2 KF mpd base"
       },
       "conditions": {},
       "caps": {},
@@ -732,19 +754,19 @@
     },
     {
       "id": "uob-preferred-plat",
-      "name": "Preferred Platinum",
+      "name": "UOB Preferred Visa Card",
       "bank": "UOB",
       "type": "Rewards",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "10X UNI$ dining",
+      "highlight": "10X UNI$ on online + mobile contactless (cap $40 combined)",
       "color": "linear-gradient(135deg,#8c8c8c,#b3b3b3)",
       "rates": {
-        "dining": 4,
+        "dining": 0.4,
         "groceries": 0.4,
         "online": 4,
         "transport": 0.4,
-        "contactless": 0.4,
+        "contactless": 4,
         "petrol": 0.4,
         "travel": 0.4,
         "entertainment": 4,
@@ -753,13 +775,17 @@
         "general": 0.4
       },
       "notes": {
-        "dining": "10X UNI$ on dining & entertainment (~4%)"
+        "dining": "In-store dining is no longer a bonus category",
+        "online": "10X UNI$ online",
+        "contactless": "10X UNI$ mobile contactless"
       },
       "conditions": {
         "dining": "Cap 2,000 UNI$/mo."
       },
       "caps": {
-        "dining": 80
+        "dining": 80,
+        "online": 40,
+        "contactless": 40
       },
       "minSpend": 0,
       "fee": "$194.40"
@@ -771,24 +797,25 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "6% dining",
+      "highlight": "5% dining, 6% fuel, 3% groceries/transport/bills",
       "color": "linear-gradient(135deg,#e8eef4,#c8d6e5)",
       "rates": {
-        "dining": 6,
+        "dining": 5,
         "groceries": 3,
         "online": 3,
         "transport": 3,
         "contactless": 1,
-        "petrol": 1,
-        "travel": 1,
+        "petrol": 6,
+        "travel": 3,
         "entertainment": 1,
         "telco": 3,
-        "utilities": 1,
+        "utilities": 3,
         "general": 0.3
       },
       "notes": {
         "dining": "6% on dining",
-        "groceries": "3% on groceries"
+        "groceries": "3% on groceries",
+        "general": "Cap S$80 at S$800 min, OR S$160 at S$1,600 min spend"
       },
       "conditions": {
         "dining": "Cap $80/mo. Min $800/mo."
@@ -797,7 +824,11 @@
         "dining": 80,
         "groceries": 80,
         "online": 80,
-        "transport": 80
+        "transport": 80,
+        "petrol": 80,
+        "travel": 80,
+        "telco": 80,
+        "utilities": 80
       },
       "minSpend": 800,
       "fee": "$194.40"
@@ -809,12 +840,12 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "6% online",
+      "highlight": "8% online (10% at green merchants)",
       "color": "linear-gradient(135deg,#1a2744,#2c3e6b)",
       "rates": {
         "dining": 1,
         "groceries": 1,
-        "online": 6,
+        "online": 8,
         "transport": 1,
         "contactless": 1,
         "petrol": 1,
@@ -825,7 +856,7 @@
         "general": 0.3
       },
       "notes": {
-        "online": "6% on online spend"
+        "online": "8% local & FCY online + mobile contactless. Total cap S$100/mo across categories."
       },
       "conditions": {
         "online": "Min $400/mo. Cap $25."
@@ -833,7 +864,7 @@
       "caps": {
         "online": 25
       },
-      "minSpend": 400,
+      "minSpend": 800,
       "fee": "$0"
     },
     {
@@ -898,40 +929,6 @@
       "fee": "$0"
     },
     {
-      "id": "ocbc-titanium",
-      "name": "Titanium Rewards",
-      "bank": "OCBC",
-      "type": "Rewards",
-      "ct": "credit",
-      "network": "MC",
-      "highlight": "10X VOYAGE$",
-      "color": "linear-gradient(135deg,#7a7a7a,#a0a0a0)",
-      "rates": {
-        "dining": 4,
-        "groceries": 0.4,
-        "online": 4,
-        "transport": 0.4,
-        "contactless": 0.4,
-        "petrol": 0.4,
-        "travel": 0.4,
-        "entertainment": 4,
-        "telco": 0.4,
-        "utilities": 0.4,
-        "general": 0.4
-      },
-      "notes": {
-        "dining": "10X VOYAGE$ on dining & online (~4%)"
-      },
-      "conditions": {
-        "dining": "Cap $1,000/mo."
-      },
-      "caps": {
-        "dining": 40
-      },
-      "minSpend": 0,
-      "fee": "$194.40"
-    },
-    {
       "id": "ocbc-ntuc",
       "name": "NTUC Plus! Visa",
       "bank": "OCBC",
@@ -967,19 +964,19 @@
     },
     {
       "id": "ocbc-rewards",
-      "name": "Rewards Card",
+      "name": "OCBC Rewards Card",
       "bank": "OCBC",
       "type": "Rewards",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "15 OCBC$ Watsons",
+      "highlight": "10X OCBC$ (~4 mpd) online + Watsons",
       "color": "linear-gradient(135deg,#9b7ec8,#c4a5e0)",
       "rates": {
         "dining": 2,
         "groceries": 2,
-        "online": 2.7,
+        "online": 7.2,
         "transport": 1,
-        "contactless": 1,
+        "contactless": 7.2,
         "petrol": 1,
         "travel": 1,
         "entertainment": 2,
@@ -988,12 +985,15 @@
         "general": 0.4
       },
       "notes": {
-        "online": "15 OCBC$ per $1 at Watsons & online (~2.7%)"
+        "online": "Capped 10,000 OCBC$/mo (~$180). Watsons/Lazada/Shopee bonus tier till Jun 2026."
       },
       "conditions": {
         "online": "Selected merchants only."
       },
-      "caps": {},
+      "caps": {
+        "online": 180,
+        "contactless": 180
+      },
       "minSpend": 0,
       "fee": "$194.40"
     },
@@ -1004,7 +1004,7 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "2.2 mpd overseas",
+      "highlight": "2.2 mpd overseas, 1.3 mpd local",
       "color": "linear-gradient(135deg,#c4b0dc,#ddd0ec)",
       "rates": {
         "dining": 2,
@@ -1017,16 +1017,16 @@
         "entertainment": 1.6,
         "telco": 1.6,
         "utilities": 1.6,
-        "general": 1.6
+        "general": 2.34
       },
       "notes": {
         "travel": "2.2 VOYAGE Miles per $1 overseas (~4%)",
-        "general": "1.3 VOYAGE Miles per $1 local"
+        "general": "Fee S$498 (not waived). Waivable at S$30k annual spend. 3.25% FX fee."
       },
       "conditions": {},
       "caps": {},
       "minSpend": 0,
-      "fee": "$194.40"
+      "fee": "$498"
     },
     {
       "id": "ocbc-premier-voyage",
@@ -1262,15 +1262,15 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "MC",
-      "highlight": "8% dining/grocery/petrol",
+      "highlight": "8% dining/groceries, 7.8% petrol & ride-hailing",
       "color": "linear-gradient(135deg,#003a70,#00254d)",
       "rates": {
         "dining": 8,
         "groceries": 8,
         "online": 0.25,
-        "transport": 0.25,
+        "transport": 7.8,
         "contactless": 0.25,
-        "petrol": 8,
+        "petrol": 7.8,
         "travel": 0.25,
         "entertainment": 0.25,
         "telco": 0.25,
@@ -1280,18 +1280,20 @@
       "notes": {
         "dining": "8% on dining",
         "groceries": "8% on groceries",
-        "petrol": "8% on petrol"
+        "petrol": "8% on petrol",
+        "general": "Combined S$80/mo cap across ALL bonus categories"
       },
       "conditions": {
         "dining": "Cap $25/cat/mo. Min $800/mo."
       },
       "caps": {
-        "dining": 25,
-        "groceries": 25,
-        "petrol": 25
+        "dining": 80,
+        "groceries": 80,
+        "petrol": 80,
+        "transport": 80
       },
       "minSpend": 800,
-      "fee": "$194.40"
+      "fee": "$196.20"
     },
     {
       "id": "citi-cashback-plus",
@@ -1330,13 +1332,13 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "4 mpd dining/online",
+      "highlight": "4 mpd on online & ride-hailing",
       "color": "linear-gradient(135deg,#003a70,#1a5fa6)",
       "rates": {
-        "dining": 7.2,
-        "groceries": 1.6,
+        "dining": 2.2,
+        "groceries": 7.2,
         "online": 7.2,
-        "transport": 1.6,
+        "transport": 7.2,
         "contactless": 1.6,
         "petrol": 1.6,
         "travel": 1.6,
@@ -1346,14 +1348,17 @@
         "general": 0.4
       },
       "notes": {
-        "dining": "4 mpd dining & online (~7.2%)"
+        "dining": "In-store dining no longer 4 mpd (only online food delivery)",
+        "online": "4 mpd on online shopping, in-store shopping, online food delivery, ride-hailing — cap 9,000 pts/mo"
       },
       "conditions": {
         "dining": "Cap 10X on $1,000/mo."
       },
       "caps": {
         "dining": 72,
-        "online": 72
+        "online": 72,
+        "groceries": 72,
+        "transport": 72
       },
       "minSpend": 0,
       "fee": "$194.40"
@@ -1365,12 +1370,12 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "5% transport",
+      "highlight": "5% SimplyGo, online groceries, ride-hailing",
       "color": "linear-gradient(135deg,#004e9a,#2470c0)",
       "rates": {
         "dining": 0.3,
-        "groceries": 0.3,
-        "online": 0.3,
+        "groceries": 5,
+        "online": 5,
         "transport": 5,
         "contactless": 0.3,
         "petrol": 0.3,
@@ -1381,15 +1386,18 @@
         "general": 0.3
       },
       "notes": {
-        "transport": "5% on public transport"
+        "transport": "5% on public transport",
+        "general": "EZ-Link auto top-ups no longer earn rewards"
       },
       "conditions": {
         "transport": "Auto-rebate on MRT/Bus."
       },
       "caps": {
-        "transport": 25
+        "transport": 25,
+        "groceries": 25,
+        "online": 25
       },
-      "minSpend": 0,
+      "minSpend": 500,
       "fee": "$0"
     },
     {
@@ -1399,7 +1407,7 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "2 mpd overseas",
+      "highlight": "32k renewal miles, 12 lounge visits/yr (was unlimited)",
       "color": "linear-gradient(135deg,#1a1a1a,#0d0d0d)",
       "rates": {
         "dining": 2.3,
@@ -1415,14 +1423,15 @@
         "general": 2.3
       },
       "notes": {
-        "travel": "2 mpd overseas. 4th night free."
+        "travel": "2 mpd overseas. 4th night free.",
+        "general": "Fee raised July 2025. Citi travel insurance discontinued Mar 2025."
       },
       "conditions": {
         "travel": "$535 annual fee."
       },
       "caps": {},
       "minSpend": 0,
-      "fee": "$535"
+      "fee": "$651.82"
     },
     {
       "id": "citi-premiermiles",
@@ -1431,7 +1440,7 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "2 mpd overseas",
+      "highlight": "2.2 mpd overseas, 1.2 mpd local — +10k miles on renewal",
       "color": "linear-gradient(135deg,#5a5a5a,#808080)",
       "rates": {
         "dining": 1.6,
@@ -1440,90 +1449,97 @@
         "transport": 1.6,
         "contactless": 1.6,
         "petrol": 1.6,
-        "travel": 3.6,
+        "travel": 4,
         "entertainment": 1.6,
         "telco": 1.6,
         "utilities": 1.6,
-        "general": 0.7
+        "general": 2.2
       },
       "notes": {
         "travel": "2 mpd overseas (~3.6%)",
-        "general": "0.4 mpd local"
+        "general": "1.2 mpd local (raised from 0.4)"
       },
       "conditions": {},
       "caps": {},
       "minSpend": 0,
-      "fee": "$194.40"
+      "fee": "$196.20"
     },
     {
       "id": "hsbc-revolution",
       "name": "Revolution Card",
       "bank": "HSBC",
-      "type": "Cashback",
+      "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "4% dining/online",
+      "highlight": "4 mpd on online + contactless — capped S$1,500 spend/mo",
       "color": "linear-gradient(135deg,#8c9aad,#b8c4d4)",
       "rates": {
-        "dining": 4,
+        "dining": 7.2,
         "groceries": 1,
-        "online": 4,
+        "online": 7.2,
         "transport": 1,
-        "contactless": 4,
+        "contactless": 7.2,
         "petrol": 1,
-        "travel": 1,
-        "entertainment": 4,
+        "travel": 7.2,
+        "entertainment": 7.2,
         "telco": 1,
         "utilities": 1,
         "general": 0.4
       },
       "notes": {
-        "dining": "~4% dining, entertainment, online contactless"
+        "dining": "~4% dining, entertainment, online contactless",
+        "general": "4 mpd on online & contactless across dining, shopping, ride-hailing, entertainment, travel — combined S$1,500 cap"
       },
       "conditions": {
         "dining": "Contactless tap required."
       },
       "caps": {
-        "dining": 40
+        "dining": 108,
+        "online": 108,
+        "contactless": 108,
+        "entertainment": 108,
+        "travel": 108
       },
       "minSpend": 0,
       "fee": "$0"
     },
     {
       "id": "hsbc-live",
-      "name": "Live+ Card",
+      "name": "HSBC Live+ Card",
       "bank": "HSBC",
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "3% on 6 categories",
+      "highlight": "Up to 8% on dining, shopping, entertainment",
       "color": "linear-gradient(135deg,#1a1a2e,#e63370)",
       "rates": {
-        "dining": 3,
-        "groceries": 3,
-        "online": 3,
-        "transport": 3,
-        "contactless": 3,
+        "dining": 8,
+        "groceries": 0.4,
+        "online": 8,
+        "transport": 0.4,
+        "contactless": 0.4,
         "petrol": 1,
         "travel": 1,
-        "entertainment": 3,
+        "entertainment": 8,
         "telco": 3,
         "utilities": 1,
         "general": 0.25
       },
       "notes": {
-        "dining": "3% dining, groceries, transport, telco, online"
+        "dining": "3% dining, groceries, transport, telco, online",
+        "general": "8% for new cards (min S$1,000); 5% existing (min S$600). Cap S$250/quarter (~$83/mo)."
       },
       "conditions": {
         "dining": "Min $600/mo."
       },
       "caps": {
-        "dining": 20,
+        "dining": 83,
         "groceries": 20,
-        "online": 20,
-        "transport": 20
+        "online": 83,
+        "transport": 20,
+        "entertainment": 83
       },
-      "minSpend": 600,
+      "minSpend": 1000,
       "fee": "$0"
     },
     {
@@ -1533,7 +1549,7 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "2.4 mpd overseas, 0% FX",
+      "highlight": "2.4 mpd overseas, 1.2 mpd local",
       "color": "linear-gradient(135deg,#0d0d0d,#1a1a1a)",
       "rates": {
         "dining": 2,
@@ -1546,10 +1562,11 @@
         "entertainment": 2,
         "telco": 2,
         "utilities": 2,
-        "general": 2
+        "general": 2.2
       },
       "notes": {
-        "travel": "2.4 mpd overseas, 0% FX markup (~4.3%)"
+        "travel": "2.4 mpd FCY",
+        "general": "1.2 mpd local. 3.25% FX fee applies (not 0%)."
       },
       "conditions": {},
       "caps": {},
@@ -1663,23 +1680,24 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "5% dining/grocery/petrol",
+      "highlight": "10% on 3 categories: dining, streaming, transport",
       "color": "linear-gradient(135deg,#0072aa,#00a3cc)",
       "rates": {
-        "dining": 5,
-        "groceries": 5,
+        "dining": 10,
+        "groceries": 0.5,
         "online": 2,
-        "transport": 5,
+        "transport": 10,
         "contactless": 2,
-        "petrol": 5,
+        "petrol": 0.5,
         "travel": 2,
-        "entertainment": 2,
-        "telco": 5,
+        "entertainment": 10,
+        "telco": 0.5,
         "utilities": 2,
         "general": 0.5
       },
       "notes": {
-        "dining": "5% dining, groceries, petrol, transport, telco"
+        "dining": "5% dining, groceries, petrol, transport, telco",
+        "general": "Below S$800 min: 0.5% only. Petrol and groceries no longer bonus."
       },
       "conditions": {
         "dining": "Cap $15/cat/mo. Min $500/mo."
@@ -1689,9 +1707,10 @@
         "groceries": 15,
         "petrol": 15,
         "transport": 15,
-        "telco": 15
+        "telco": 15,
+        "entertainment": 15
       },
-      "minSpend": 500,
+      "minSpend": 800,
       "fee": "$0"
     },
     {
@@ -1701,7 +1720,7 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "3 mpd overseas",
+      "highlight": "3 mpd FCY with S$2,000+/cycle, else 1 mpd",
       "color": "linear-gradient(135deg,#1a1a1a,#0d0d0d)",
       "rates": {
         "dining": 2.5,
@@ -1714,18 +1733,18 @@
         "entertainment": 2.5,
         "telco": 2.5,
         "utilities": 2.5,
-        "general": 2.5
+        "general": 1.8
       },
       "notes": {
-        "general": "1.4 mpd local",
-        "travel": "3 mpd overseas (~5.4%)"
+        "general": "3.5% FX fee — highest in market. Fee strictly non-waivable.",
+        "travel": "3 mpd overseas only with min S$2,000 per statement cycle; otherwise 1 mpd"
       },
       "conditions": {
         "travel": "$588.50 annual fee."
       },
       "caps": {},
       "minSpend": 0,
-      "fee": "$588.50"
+      "fee": "$600"
     },
     {
       "id": "sc-journey",
@@ -1734,29 +1753,35 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "3 mpd rides/food",
+      "highlight": "3 mpd online transport/grocery/food delivery (combined cap)",
       "color": "linear-gradient(135deg,#0072aa,#339ec2)",
       "rates": {
-        "dining": 2.5,
+        "dining": 5.4,
         "groceries": 5.4,
         "online": 2.5,
         "transport": 5.4,
         "contactless": 2.5,
         "petrol": 2.5,
-        "travel": 2.5,
+        "travel": 3.6,
         "entertainment": 2.5,
         "telco": 2.5,
         "utilities": 2.5,
-        "general": 1.6
+        "general": 2.2
       },
       "notes": {
         "transport": "3 mpd rides & food deliveries (~5.4%)",
-        "groceries": "3 mpd groceries (~5.4%)"
+        "groceries": "3 mpd groceries (~5.4%)",
+        "general": "Cap 3,000 bonus miles/cycle (~S$54). +10k renewal miles. 1.2 mpd local base."
       },
       "conditions": {},
-      "caps": {},
+      "caps": {
+        "transport": 54,
+        "groceries": 54,
+        "dining": 54,
+        "travel": 54
+      },
       "minSpend": 0,
-      "fee": "$180"
+      "fee": "$196.20"
     },
     {
       "id": "sc-rewards-plus",
@@ -1831,33 +1856,37 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "8% weekend dining",
+      "highlight": "Up to 8% on 5 selected categories (no weekend-only restriction)",
       "color": "linear-gradient(135deg,#ffc629,#e6a800)",
       "rates": {
         "dining": 8,
-        "groceries": 5,
+        "groceries": 8,
         "online": 0.3,
-        "transport": 0.3,
+        "transport": 8,
         "contactless": 0.3,
         "petrol": 5,
         "travel": 0.3,
-        "entertainment": 0.3,
-        "telco": 0.3,
+        "entertainment": 8,
+        "telco": 8,
         "utilities": 0.3,
         "general": 0.3
       },
       "notes": {
-        "dining": "8% weekend dining (Fri-Sun)"
+        "dining": "8% weekend dining (Fri-Sun)",
+        "general": "6% at S$800 min (cap $20/cat), 8% at S$1,600 min (cap $30/cat). Pick 5 of 10 categories."
       },
       "conditions": {
         "dining": "Fri-Sun only. Cap $25/cat. Min $500/mo."
       },
       "caps": {
-        "dining": 25,
-        "groceries": 25,
-        "petrol": 25
+        "dining": 30,
+        "groceries": 30,
+        "petrol": 25,
+        "transport": 30,
+        "entertainment": 30,
+        "telco": 30
       },
-      "minSpend": 500,
+      "minSpend": 800,
       "fee": "$0"
     },
     {
@@ -1867,7 +1896,7 @@
       "type": "Miles",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "3.2 mpd overseas",
+      "highlight": "2.8 mpd overseas",
       "color": "linear-gradient(135deg,#1a2744,#2a3d5c)",
       "rates": {
         "dining": 2.2,
@@ -1876,18 +1905,18 @@
         "transport": 2.2,
         "contactless": 2.2,
         "petrol": 2.2,
-        "travel": 5.8,
+        "travel": 5,
         "entertainment": 2.2,
         "telco": 2.2,
         "utilities": 2.2,
         "general": 1.6
       },
       "notes": {
-        "travel": "3.2 mpd overseas (~5.8%)"
+        "travel": "2.8 mpd overseas (not 3.2 — that was promotional). 3.25% FX fee."
       },
       "conditions": {},
       "caps": {},
-      "minSpend": 0,
+      "minSpend": 800,
       "fee": "$194.40"
     },
     {
@@ -1933,7 +1962,7 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "AMEX",
-      "highlight": "1.5% unlimited",
+      "highlight": "1.5% unlimited, no cap, no min spend (fee waived first year)",
       "color": "linear-gradient(135deg,#006fcf,#004a99)",
       "rates": {
         "dining": 1.5,
@@ -1949,12 +1978,12 @@
         "general": 1.5
       },
       "notes": {
-        "general": "1.5% unlimited. No cap. No min."
+        "general": "Fee S$174.40 (was incorrectly $0 in DB). Welcome 3% first 6 months up to S$5k."
       },
       "conditions": {},
       "caps": {},
       "minSpend": 0,
-      "fee": "$0"
+      "fee": "$174.40"
     },
     {
       "id": "amex-kf-ascend",
@@ -1963,16 +1992,16 @@
       "type": "Miles",
       "ct": "credit",
       "network": "AMEX",
-      "highlight": "3 KF mpd SIA",
+      "highlight": "2 KF mpd SIA/Scoot/Grab + 10k renewal voucher",
       "color": "linear-gradient(135deg,#002244,#003d6b)",
       "rates": {
-        "dining": 3.6,
+        "dining": 2.2,
         "groceries": 2.2,
         "online": 2.2,
         "transport": 2.2,
         "contactless": 2.2,
         "petrol": 2.2,
-        "travel": 5.4,
+        "travel": 3.6,
         "entertainment": 2.2,
         "telco": 2.2,
         "utilities": 2.2,
@@ -1980,14 +2009,15 @@
       },
       "notes": {
         "dining": "2 KF mpd dining (~3.6%)",
-        "travel": "3 KF mpd SIA/Scoot (~5.4%)"
+        "travel": "2 mpd on SIA/Scoot bookings + Grab, cap S$200/mo",
+        "general": "1.2 KF mpd base local & FCY. Dining is no longer a bonus."
       },
       "conditions": {
         "travel": "SIA/Scoot only. $195 annual fee."
       },
       "caps": {},
       "minSpend": 0,
-      "fee": "$195"
+      "fee": "$397.85"
     },
     {
       "id": "amex-kf-credit",
@@ -2261,29 +2291,35 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "MC",
-      "highlight": "6% FairPrice",
+      "highlight": "15% on your preferred category (selectable)",
       "color": "linear-gradient(135deg,#6b21a8,#9333ea)",
       "rates": {
-        "dining": 1.5,
-        "groceries": 6,
-        "online": 1.5,
-        "transport": 1.5,
-        "contactless": 1.5,
-        "petrol": 1.5,
+        "dining": 15,
+        "groceries": 15,
+        "online": 15,
+        "transport": 15,
+        "contactless": 15,
+        "petrol": 15,
         "travel": 1.5,
         "entertainment": 1.5,
         "telco": 1.5,
         "utilities": 1.5,
-        "general": 1.5
+        "general": 1
       },
       "notes": {
-        "groceries": "Up to 6% at FairPrice"
+        "groceries": "Up to 6% at FairPrice",
+        "general": "Pick 1 preferred category for 15% — cap S$250/quarter (~$83/mo). 1% on everything else."
       },
       "conditions": {
         "groceries": "Link FairPrice membership."
       },
       "caps": {
-        "groceries": 30
+        "groceries": 83,
+        "dining": 83,
+        "transport": 83,
+        "online": 83,
+        "petrol": 83,
+        "contactless": 83
       },
       "minSpend": 0,
       "fee": "$0"
@@ -2992,31 +3028,35 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "10% dining",
+      "highlight": "10% online shopping, groceries, beauty, pets, cruises",
       "color": "linear-gradient(135deg,#7a0019,#b8002d)",
       "rates": {
-        "dining": 10,
-        "groceries": 0.2,
-        "online": 0.2,
+        "dining": 0.2,
+        "groceries": 10,
+        "online": 10,
         "transport": 0.2,
         "contactless": 0.2,
         "petrol": 0.2,
-        "travel": 0.2,
+        "travel": 10,
         "entertainment": 0.2,
         "telco": 0.2,
         "utilities": 0.2,
         "general": 0.2
       },
       "notes": {
-        "dining": "10% cashback on dining"
+        "dining": "10% cashback on dining",
+        "general": "NO dining bonus anymore. Cap S$100/mo total, max S$20/category. 0.2% beyond cap."
       },
       "conditions": {
         "dining": "Min $500/mo. Cap $30/mo."
       },
       "caps": {
-        "dining": 30
+        "dining": 30,
+        "online": 20,
+        "groceries": 20,
+        "travel": 20
       },
-      "minSpend": 500,
+      "minSpend": 800,
       "fee": "$0"
     },
     {
@@ -3062,27 +3102,28 @@
       "type": "Cashback",
       "ct": "credit",
       "network": "MC",
-      "highlight": "2% overseas",
+      "highlight": "2% lifestyle (dining, entertainment, ride-hailing, FCY)",
       "color": "linear-gradient(135deg,#7a0019,#4a0010)",
       "rates": {
-        "dining": 0.2,
+        "dining": 2,
         "groceries": 0.2,
         "online": 0.2,
-        "transport": 0.2,
+        "transport": 2,
         "contactless": 0.2,
         "petrol": 0.2,
         "travel": 2,
-        "entertainment": 0.2,
+        "entertainment": 2,
         "telco": 0.2,
         "utilities": 0.2,
-        "general": 0.2
+        "general": 1
       },
       "notes": {
-        "travel": "2% on overseas spend. No FX fee."
+        "travel": "2% on overseas spend. No FX fee.",
+        "general": "2% on dining, food delivery, movies, ride-hailing, luxury, FCY. 1% all other (min S$500/mo)."
       },
       "conditions": {},
       "caps": {},
-      "minSpend": 0,
+      "minSpend": 500,
       "fee": "$0"
     },
     {
@@ -3158,23 +3199,25 @@
       "type": "Rewards",
       "ct": "credit",
       "network": "VISA",
-      "highlight": "10X dining & travel",
+      "highlight": "4 mpd overseas + petrol, S$1,000+ overseas spend required",
       "color": "linear-gradient(135deg,#003d82,#002855)",
       "rates": {
-        "dining": 4,
+        "dining": 0.3,
         "groceries": 0.4,
-        "online": 4,
+        "online": 0.3,
         "transport": 0.4,
         "contactless": 0.4,
         "petrol": 0.4,
-        "travel": 4,
-        "entertainment": 4,
+        "travel": 7.2,
+        "entertainment": 0.3,
         "telco": 0.4,
         "utilities": 0.4,
-        "general": 0.4
+        "general": 0.3
       },
       "notes": {
-        "dining": "10X UNI$ on dining, entertainment, travel, online (~4%)"
+        "dining": "10X UNI$ on dining, entertainment, travel, online (~4%)",
+        "travel": "4 mpd overseas (min S$1,000/statement), cap S$120 cashback/mo equivalent",
+        "general": "Petrol earns the same 4 mpd"
       },
       "conditions": {
         "dining": "Cap 2,000 UNI$/mo."
@@ -3182,7 +3225,7 @@
       "caps": {
         "dining": 80,
         "online": 80,
-        "travel": 80,
+        "travel": 120,
         "entertainment": 80
       },
       "minSpend": 0,
@@ -3221,36 +3264,6 @@
       },
       "minSpend": 200,
       "fee": "$0"
-    },
-    {
-      "id": "hsbc-visa-plat",
-      "name": "Visa Platinum",
-      "bank": "HSBC",
-      "type": "Rewards",
-      "ct": "credit",
-      "network": "VISA",
-      "highlight": "5X dining & travel",
-      "color": "linear-gradient(135deg,#db0011,#8a0009)",
-      "rates": {
-        "dining": 2,
-        "groceries": 0.4,
-        "online": 2,
-        "transport": 0.4,
-        "contactless": 0.4,
-        "petrol": 0.4,
-        "travel": 2,
-        "entertainment": 2,
-        "telco": 0.4,
-        "utilities": 0.4,
-        "general": 0.4
-      },
-      "notes": {
-        "dining": "5X rewards on dining, travel, entertainment (~2%)"
-      },
-      "conditions": {},
-      "caps": {},
-      "minSpend": 0,
-      "fee": "$194.40"
     },
     {
       "id": "maybank-platinum-visa",
@@ -3405,6 +3418,103 @@
       "caps": {},
       "minSpend": 0,
       "fee": "$0"
+    },
+    {
+      "id": "mari-credit",
+      "name": "Mari Credit Card",
+      "bank": "Maribank",
+      "type": "Cashback",
+      "ct": "credit",
+      "network": "MASTERCARD",
+      "highlight": "1.5% on everything, NO FX fee, NO annual fee",
+      "rates": {
+        "online": 1.5,
+        "dining": 1.5,
+        "groceries": 1.5,
+        "transport": 1.5,
+        "contactless": 1.5,
+        "petrol": 1.5,
+        "travel": 1.5,
+        "entertainment": 1.5,
+        "telco": 1.5,
+        "utilities": 1.5,
+        "general": 1.5
+      },
+      "notes": {
+        "general": "1.5% on all spend in any currency. No FX fee from Jan 2026. Cashback credited instantly from Mar 2026."
+      },
+      "conditions": {},
+      "caps": {},
+      "minSpend": 0,
+      "fee": "$0",
+      "color": "linear-gradient(135deg,#FF6B35,#F7931E)"
+    },
+    {
+      "id": "sc-beyond",
+      "name": "Beyond Credit Card",
+      "bank": "Standard Chartered",
+      "type": "Miles",
+      "ct": "credit",
+      "network": "VISA",
+      "highlight": "Premium Visa Infinite — unlimited Priority Pass, 100k miles welcome",
+      "rates": {
+        "online": 3.6,
+        "dining": 3.6,
+        "groceries": 3.6,
+        "transport": 3.6,
+        "contactless": 3.6,
+        "petrol": 3.6,
+        "travel": 5.4,
+        "entertainment": 3.6,
+        "telco": 3.6,
+        "utilities": 3.6,
+        "general": 3.6
+      },
+      "notes": {
+        "general": "2 mpd local, 3 mpd FCY (estimated). Unlimited Priority Pass for principal + up to 4 supp. Welcome 100k miles (60k for fee + 40k for $20k spend) till Jun 2026."
+      },
+      "conditions": {},
+      "caps": {},
+      "minSpend": 0,
+      "fee": "$1,635",
+      "color": "linear-gradient(135deg,#0A2540,#2F4F8E)"
+    },
+    {
+      "id": "uob-ladys-solitaire",
+      "name": "Lady’s Solitaire Card",
+      "bank": "UOB",
+      "type": "Miles",
+      "ct": "credit",
+      "network": "MASTERCARD",
+      "highlight": "Premium metal card — pick 2 preferred categories, up to 10 mpd each",
+      "rates": {
+        "online": 18,
+        "dining": 18,
+        "groceries": 18,
+        "transport": 18,
+        "travel": 18,
+        "entertainment": 18,
+        "contactless": 1,
+        "petrol": 1,
+        "telco": 1,
+        "utilities": 1,
+        "general": 0.7
+      },
+      "notes": {
+        "general": "Select 2 of 7 preferred categories for 10 mpd. Cap 2,700 bonus UNI$/mo combined (1,350 per cat = ~S$750 spend/cat). Income req S$120k."
+      },
+      "conditions": {},
+      "caps": {
+        "online": 250,
+        "dining": 250,
+        "groceries": 250,
+        "transport": 250,
+        "travel": 250,
+        "entertainment": 250
+      },
+      "minSpend": 0,
+      "fee": "$414.20",
+      "color": "linear-gradient(135deg,#1A1A1A,#4A4A4A)"
     }
   ]
 }
