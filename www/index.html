@@ -1212,7 +1212,7 @@
                 <div v-if="expandedRec===rec.card.id" class="mt-1.5 p-2.5 rounded-lg reveal-expand" :style="{background:'var(--bg3)'}">
                   <p class="text-[11px] leading-relaxed" style="color:var(--text2)">
                     <span v-if="rec.card.minSpend&&!rec.meetsMinSpend">Needs <strong>S${{rec.card.minSpend}}/mo</strong> min spend{{spendAmount>0?' — you\'re S$'+(rec.card.minSpend-spendAmount)+' short':''}}, so bonus rates aren't unlocked. That's why it ranks below #1.</span>
-                    <span v-else-if="rec.capped">Caps at <strong>S${{rec.card.caps[selectedCategory]}}/mo</strong> cashback{{rec.effectiveRate<rec.rate?' — effective rate drops to '+fmtRate(rec.effectiveRate)+' across your spend':''}}. The #1 card edges it out on uncapped value.</span>
+                    <span v-else-if="rec.capped">Caps at <strong>S${{rec.card.caps[selectedCategory]}}/mo</strong> cashback{{rec.rate>rec.effectiveRate?' — effective rate drops to '+fmtRate(rec.effectiveRate)+' across your spend':''}}. The #1 card edges it out on uncapped value.</span>
                     <span v-else-if="rec.annualFee>0">Solid <strong>{{fmtRate(rec.rate)}}</strong>, but the <strong>S${{rec.annualFee}}</strong> annual fee drags net value below #1.</span>
                     <span v-else>Earns <strong>{{fmtRate(rec.rate)}}</strong> on {{catLabel(selectedCategory).toLowerCase()}} — just shaded by the #1 pick's higher rate or cleaner terms.</span>
                   </p>
