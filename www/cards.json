@@ -1,7 +1,7 @@
 {
-  "dataVersion": 3,
+  "dataVersion": 4,
   "updated": "2026-05-18",
-  "note": "VERSO Singapore card database. v3: added UOB KrisFlyer Debit Card (most-held debit miles card).",
+  "note": "VERSO Singapore card database. v4: corrected UOB KrisFlyer Debit terms (annual fee S$54.50, bonus cap 5% of MAB).",
   "signupBonuses": {
     "dbs-live-fresh": {
       "amt": 150,
@@ -3538,13 +3538,15 @@
         "general": 0.72
       },
       "notes": {
-        "travel": "1 KF mpd on SIA/Scoot/KrisShop/Kris+ (1.5 mpd KrisShop)",
-        "general": "0.4 KF mpd base. Boost to up to 7 mpd by maintaining S$1,000 avg balance + crediting S$1,600+ salary monthly into the linked KrisFlyer UOB Account."
+        "travel": "1 KF mpd on SIA/Scoot/KrisShop/Kris+",
+        "general": "0.4 KF mpd base. +5 mpd with S$1,000 monthly avg balance, +6 mpd if salary credited (S$1,600 GIRO \"SALA\"). Bonus miles capped at 5% of avg balance/mo."
       },
-      "conditions": {},
+      "conditions": {
+        "general": "Bonus tier: S$1,000 MAB + salary credit. Bonus capped at 5% of MAB."
+      },
       "caps": {},
       "minSpend": 0,
-      "fee": "$0",
+      "fee": "$54.50",
       "color": "linear-gradient(135deg,#003366,#00509e)"
     }
   ]
