@@ -1,7 +1,13 @@
-var CACHE='verso-v11';
+var CACHE='verso-v12';
 var URLS=['./', './index.html', './privacy.html', './manifest.webmanifest', './cards.json', './apple-touch-icon.png', './favicon.png', './makers-mark.png'];
 self.addEventListener('install', function(e) {
-  e.waitUntil(caches.open(CACHE).then(function(c) { return c.addAll(URLS); }));
+  // Resilient precache: cache what we can, never fail install on a single 404 —
+  // otherwise the SW never activates and the page loads forever from old cache.
+  e.waitUntil(caches.open(CACHE).then(function(c) {
+    return Promise.all(URLS.map(function(u) {
+      return c.add(u).catch(function() { /* skip if 404 — keep going */ });
+    }));
+  }));
   self.skipWaiting();
 });
 self.addEventListener('activate', function(e) {
