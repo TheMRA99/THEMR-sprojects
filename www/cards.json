@@ -1,7 +1,7 @@
 {
-  "dataVersion": 2,
+  "dataVersion": 3,
   "updated": "2026-05-18",
-  "note": "VERSO Singapore card database. Edit this file to update card terms — the app fetches it on launch. v2: bulk audit fixes from 2026-05-18 (rates, fees, caps, min spend across 33 major cards).",
+  "note": "VERSO Singapore card database. v3: added UOB KrisFlyer Debit Card (most-held debit miles card).",
   "signupBonuses": {
     "dbs-live-fresh": {
       "amt": 150,
@@ -3515,6 +3515,37 @@
       "minSpend": 0,
       "fee": "$414.20",
       "color": "linear-gradient(135deg,#1A1A1A,#4A4A4A)"
+    },
+    {
+      "id": "uob-krisflyer-debit",
+      "name": "KrisFlyer UOB Debit Card",
+      "bank": "UOB",
+      "type": "Miles",
+      "ct": "debit",
+      "network": "MASTERCARD",
+      "highlight": "0.4 mpd everywhere, 1 mpd SIA — up to 7 mpd with KrisFlyer UOB Account + salary",
+      "rates": {
+        "online": 0.72,
+        "dining": 0.72,
+        "groceries": 0.72,
+        "transport": 0.72,
+        "contactless": 0.72,
+        "petrol": 0.72,
+        "travel": 1.8,
+        "entertainment": 0.72,
+        "telco": 0.72,
+        "utilities": 0.72,
+        "general": 0.72
+      },
+      "notes": {
+        "travel": "1 KF mpd on SIA/Scoot/KrisShop/Kris+ (1.5 mpd KrisShop)",
+        "general": "0.4 KF mpd base. Boost to up to 7 mpd by maintaining S$1,000 avg balance + crediting S$1,600+ salary monthly into the linked KrisFlyer UOB Account."
+      },
+      "conditions": {},
+      "caps": {},
+      "minSpend": 0,
+      "fee": "$0",
+      "color": "linear-gradient(135deg,#003366,#00509e)"
     }
   ]
 }
