@@ -1,7 +1,7 @@
 {
-  "name": "verso",
+  "name": "recto",
   "version": "7.0.0",
-  "description": "VERSO — The smartest way to maximize card rewards in Singapore",
+  "description": "RECTO — The smartest way to maximize card rewards in Singapore",
   "main": "index.html",
   "scripts": {
     "icons": "npx @capacitor/assets generate --iconBackgroundColor '#0a0206' --iconBackgroundColorDark '#0a0206' --splashBackgroundColor '#0a0206' --splashBackgroundColorDark '#0a0206'",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheMRA99/verso.git"
+    "url": "git+https://github.com/TheMRA99/recto.git"
   },
   "keywords": ["finance", "credit-cards", "rewards", "singapore"],
   "author": "Muneer Ahmed",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TheMRA99/verso/issues"
+    "url": "https://github.com/TheMRA99/recto/issues"
   },
-  "homepage": "https://themra99.github.io/verso/",
+  "homepage": "https://themra99.github.io/recto/",
   "type": "commonjs",
   "dependencies": {
     "@capacitor/android": "^8.3.0",
